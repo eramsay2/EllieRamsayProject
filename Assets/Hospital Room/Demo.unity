@@ -94,7 +94,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: ba7aa62e4ce655e4e95409e722899871, type: 2}
   m_LightingSettings: {fileID: 1108062883}
 --- !u!196 &4
 NavMeshSettings:
@@ -2098,7 +2098,7 @@ LightingSettings:
   m_PrefabAsset: {fileID: 0}
   m_Name: Settings.lighting
   serializedVersion: 7
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_EnableBakedLightmaps: 1
   m_EnableRealtimeLightmaps: 0
   m_RealtimeEnvironmentLighting: 1
@@ -2106,7 +2106,7 @@ LightingSettings:
   m_AlbedoBoost: 1
   m_IndirectOutputScale: 1
   m_UsingShadowmask: 0
-  m_BakeBackend: 1
+  m_BakeBackend: 2
   m_LightmapMaxSize: 1024
   m_LightmapSizeFixed: 0
   m_BakeResolution: 40
@@ -4121,6 +4121,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Structure
       objectReference: {fileID: 0}
+    - target: {fileID: 8511704131836021481, guid: 9eed6d07aaee84b448b61a7e42f9cde8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4137,6 +4141,10 @@ PrefabInstance:
     - target: {fileID: 177466, guid: 10f04e8a93d403b4f9303218b106e5c0, type: 3}
       propertyPath: m_Name
       value: Bottle
+      objectReference: {fileID: 0}
+    - target: {fileID: 177466, guid: 10f04e8a93d403b4f9303218b106e5c0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 409164, guid: 10f04e8a93d403b4f9303218b106e5c0, type: 3}
       propertyPath: m_RootOrder
