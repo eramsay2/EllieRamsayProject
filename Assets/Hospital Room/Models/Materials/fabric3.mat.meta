@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 2b0a502d01b98dc4f9d29ea723d27b6b
+timeCreated: 1456213694
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 57399
+  packageName: Hospital Room
+  packageVersion: 1.2
+  assetPath: Assets/Hospital Room/Models/Materials/fabric3.mat
+  uploadId: 616028

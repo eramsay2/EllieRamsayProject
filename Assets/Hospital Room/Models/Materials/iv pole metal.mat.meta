@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a38b5fede03ddcf448132cfc23770d9a
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 57399
+  packageName: Hospital Room
+  packageVersion: 1.2
+  assetPath: Assets/Hospital Room/Models/Materials/iv pole metal.mat
+  uploadId: 616028

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5a48d776d0f92c9428b84733287aac17
+timeCreated: 1456176512
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 57399
+  packageName: Hospital Room
+  packageVersion: 1.2
+  assetPath: Assets/Hospital Room/Models/Materials/bed.mat
+  uploadId: 616028

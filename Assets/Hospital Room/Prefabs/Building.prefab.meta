@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e144076df9190de4dbfae4439a4f8b10
+timeCreated: 1457095744
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 57399
+  packageName: Hospital Room
+  packageVersion: 1.2
+  assetPath: Assets/Hospital Room/Prefabs/Building.prefab
+  uploadId: 616028

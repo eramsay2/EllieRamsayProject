@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b676aacff6e042449aae15c1b3b78d52
+timeCreated: 1457095800
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 57399
+  packageName: Hospital Room
+  packageVersion: 1.2
+  assetPath: Assets/Hospital Room/Prefabs/Ceiling lamp.prefab
+  uploadId: 616028

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9bfdd4140d0c1a74d9380a12692bbee0
+timeCreated: 1456209302
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 57399
+  packageName: Hospital Room
+  packageVersion: 1.2
+  assetPath: Assets/Hospital Room/Models/Materials/Floor.mat
+  uploadId: 616028

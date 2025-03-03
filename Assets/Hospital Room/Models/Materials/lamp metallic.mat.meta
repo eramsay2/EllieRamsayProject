@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 05afd4319a6762d49b64e9afa00ca94c
+timeCreated: 1456297684
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 57399
+  packageName: Hospital Room
+  packageVersion: 1.2
+  assetPath: Assets/Hospital Room/Models/Materials/lamp metallic.mat
+  uploadId: 616028

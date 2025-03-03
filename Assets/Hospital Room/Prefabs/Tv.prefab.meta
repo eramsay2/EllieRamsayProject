@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 51beba292b1500445a554f5da2965d43
+timeCreated: 1457101232
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 57399
+  packageName: Hospital Room
+  packageVersion: 1.2
+  assetPath: Assets/Hospital Room/Prefabs/Tv.prefab
+  uploadId: 616028

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9640cc1184c65b840a8d921e7cfdf237
+timeCreated: 1457095789
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 57399
+  packageName: Hospital Room
+  packageVersion: 1.2
+  assetPath: Assets/Hospital Room/Prefabs/Ceiling.prefab
+  uploadId: 616028

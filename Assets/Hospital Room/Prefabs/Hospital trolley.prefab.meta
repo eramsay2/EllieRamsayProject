@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 4eafdfafe6492d6498c9a5887dbe36a3
+timeCreated: 1457096711
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 57399
+  packageName: Hospital Room
+  packageVersion: 1.2
+  assetPath: Assets/Hospital Room/Prefabs/Hospital trolley.prefab
+  uploadId: 616028
