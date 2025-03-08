@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6b23cdd267a1d7248817967b391d77e0
+timeCreated: 1457026626
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 57399
+  packageName: Hospital Room
+  packageVersion: 1.2
+  assetPath: Assets/Hospital Room/Models/Materials/plastic 1.mat
+  uploadId: 616028

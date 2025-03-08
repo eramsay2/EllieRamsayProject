@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: dea69764427bb4147b5292910227ab6e
+timeCreated: 1456160584
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 57399
+  packageName: Hospital Room
+  packageVersion: 1.2
+  assetPath: Assets/Hospital Room/Models/Materials/plant glass.mat
+  uploadId: 616028

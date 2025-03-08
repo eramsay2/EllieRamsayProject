@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1380c1c740f67854091fe10e8cacaf47
+timeCreated: 1456162996
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 57399
+  packageName: Hospital Room
+  packageVersion: 1.2
+  assetPath: Assets/Hospital Room/Models/Materials/clipboard.mat
+  uploadId: 616028

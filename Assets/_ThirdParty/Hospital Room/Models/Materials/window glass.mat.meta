@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 351ec09fd0bd39c43b978661e09bc200
+timeCreated: 1456246986
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 57399
+  packageName: Hospital Room
+  packageVersion: 1.2
+  assetPath: Assets/Hospital Room/Models/Materials/window glass.mat
+  uploadId: 616028
