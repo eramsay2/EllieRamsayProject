@@ -3864,6 +3864,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jar
       objectReference: {fileID: 0}
+    - target: {fileID: 5527075784840840313, guid: f90b5dd8c677d6f4abf2186ad3417517, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7910706171715937921, guid: f90b5dd8c677d6f4abf2186ad3417517, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -4465,6 +4469,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6850928170006880636, guid: 32f900ebdeb20174b89a583cccee3879, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8323898429584681886, guid: 32f900ebdeb20174b89a583cccee3879, type: 3}
       propertyPath: m_Name
       value: Apple
@@ -4627,6 +4635,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1404732020}
     m_Modifications:
+    - target: {fileID: 2857751195430989295, guid: fd9b30a8fdc684f41a01928f2ccb6ddb, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4157173257500096692, guid: fd9b30a8fdc684f41a01928f2ccb6ddb, type: 3}
       propertyPath: m_Name
       value: Spoon
@@ -5982,6 +5994,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9140243148388417108, guid: 991e382eca8f64d439bcd897a7041cc1, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6360,6 +6376,10 @@ PrefabInstance:
     - target: {fileID: 4068240916012763926, guid: cbdc1ace92870cf47891eeccadd2215c, type: 3}
       propertyPath: m_Name
       value: Pills
+      objectReference: {fileID: 0}
+    - target: {fileID: 6415448312373212948, guid: cbdc1ace92870cf47891eeccadd2215c, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7922456910679486962, guid: cbdc1ace92870cf47891eeccadd2215c, type: 3}
       propertyPath: m_RootOrder
