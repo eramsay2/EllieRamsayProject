@@ -128,7 +128,7 @@ Material:
     - _ThumbGlowValue: 0
     - _UVSec: 0
     - _UseTexture: 0
-    - _WristFade: 0.907
+    - _WristFade: 1
     - _WristLocalOffset: 0.06
     - _WristRange: 0.08
     - _WristScale: 1
