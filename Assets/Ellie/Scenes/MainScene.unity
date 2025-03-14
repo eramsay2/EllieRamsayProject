@@ -3398,6 +3398,10 @@ PrefabInstance:
       value: Jar
       objectReference: {fileID: 0}
     - target: {fileID: 5527075784840840313, guid: f90b5dd8c677d6f4abf2186ad3417517, type: 3}
+      propertyPath: m_Mass
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5527075784840840313, guid: f90b5dd8c677d6f4abf2186ad3417517, type: 3}
       propertyPath: m_IsKinematic
       value: 0
       objectReference: {fileID: 0}
