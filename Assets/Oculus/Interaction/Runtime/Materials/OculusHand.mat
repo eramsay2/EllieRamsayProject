@@ -115,7 +115,7 @@ Material:
     - _OutlineOpacity: 1
     - _OutlinePinchRange: 0.15
     - _OutlineSphereHardness: 0.15
-    - _OutlineWidth: 0.0014
+    - _OutlineWidth: 0.00125
     - _Parallax: 0.02
     - _PinchIntensity: 0
     - _PinchRange: 0.12
@@ -128,7 +128,7 @@ Material:
     - _ThumbGlowValue: 0
     - _UVSec: 0
     - _UseTexture: 0
-    - _WristFade: 1
+    - _WristFade: 0.907
     - _WristLocalOffset: 0.06
     - _WristRange: 0.08
     - _WristScale: 1
@@ -136,20 +136,20 @@ Material:
     - __dirty: 0
     m_Colors:
     - _Color: {r: 1, g: 0.44811308, b: 0.44811308, a: 1}
-    - _ColorBottom: {r: 0.36862746, g: 0.3803922, b: 0.4039216, a: 1}
+    - _ColorBottom: {r: 0.36862746, g: 0.38431376, b: 0.42352945, a: 1}
     - _ColorGlow: {r: 0.1215686, g: 0.1254902, b: 0.1294117, a: 1}
     - _ColorPrimary: {r: 1, g: 0.4481132, b: 0.4481132, a: 1}
     - _ColorSecondary: {r: 1, g: 0.8443396, b: 0.8443396, a: 1}
-    - _ColorTop: {r: 0.4039216, g: 0.43137258, b: 0.46274513, a: 1}
+    - _ColorTop: {r: 0.35686275, g: 0.37254903, b: 0.4156863, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FingerGlowColor: {r: 1, g: 1, b: 1, a: 1}
-    - _GlowColor: {r: 0.3803922, g: 0.38431376, b: 0.4039216, a: 1}
+    - _GlowColor: {r: 0.3529412, g: 0.36862746, b: 0.41176474, a: 1}
     - _MainColor: {r: 0.1960784, g: 0.2039215, b: 0.2117647, a: 1}
-    - _OutlineColor: {r: 0.39607847, g: 0.38823533, b: 0.39607847, a: 1}
+    - _OutlineColor: {r: 0.3647059, g: 0.3803922, b: 0.41960788, a: 1}
     - _OutlineColorBottom: {r: 0, g: 0.19427729, b: 1, a: 1}
     - _OutlineColorTop: {r: 1, g: 0, b: 0, a: 1}
     - _OutlineGlowColor: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
-    - _OutlineJointColor: {r: 0.37647063, g: 0.38431376, b: 0.40784317, a: 1}
+    - _OutlineJointColor: {r: 0.3647059, g: 0.3803922, b: 0.41960788, a: 1}
     - _PinchColor: {r: 1, g: 0, b: 0, a: 1}
     - _PinchPosition: {r: 0, g: 0, b: 0, a: 0}
     - _WristLocalOffset: {r: -0.01, g: 0.01, b: 0, a: 0}
