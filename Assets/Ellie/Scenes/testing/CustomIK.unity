@@ -2557,21 +2557,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1404732020}
     m_Modifications:
-    - target: {fileID: 1926780263216037120, guid: fd9b30a8fdc684f41a01928f2ccb6ddb, type: 3}
+    - target: {fileID: 2918634045438301497, guid: fd9b30a8fdc684f41a01928f2ccb6ddb, type: 3}
       propertyPath: m_InteractionManager
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2857751195430989295, guid: fd9b30a8fdc684f41a01928f2ccb6ddb, type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1203826951}
     - target: {fileID: 4157173257500096692, guid: fd9b30a8fdc684f41a01928f2ccb6ddb, type: 3}
       propertyPath: m_Name
       value: Spoon
-      objectReference: {fileID: 0}
-    - target: {fileID: 4318161335903713910, guid: fd9b30a8fdc684f41a01928f2ccb6ddb, type: 3}
-      propertyPath: m_InteractionManager
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5265673537726306345, guid: fd9b30a8fdc684f41a01928f2ccb6ddb, type: 3}
       propertyPath: m_RootOrder
@@ -2583,7 +2575,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5265673537726306345, guid: fd9b30a8fdc684f41a01928f2ccb6ddb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.0603826
+      value: 1.0646
       objectReference: {fileID: 0}
     - target: {fileID: 5265673537726306345, guid: fd9b30a8fdc684f41a01928f2ccb6ddb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2617,10 +2609,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5490654102917729771, guid: fd9b30a8fdc684f41a01928f2ccb6ddb, type: 3}
-    - {fileID: 7204645559618193676, guid: fd9b30a8fdc684f41a01928f2ccb6ddb, type: 3}
-    - {fileID: 4401714148576900650, guid: fd9b30a8fdc684f41a01928f2ccb6ddb, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
