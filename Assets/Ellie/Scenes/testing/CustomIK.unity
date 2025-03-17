@@ -3398,10 +3398,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bed
       objectReference: {fileID: 0}
-    - target: {fileID: 185688, guid: a45708abc5ed975458c6321d5f28e8a7, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 432962, guid: a45708abc5ed975458c6321d5f28e8a7, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -3446,8 +3442,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 9095311277079757166, guid: a45708abc5ed975458c6321d5f28e8a7, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
