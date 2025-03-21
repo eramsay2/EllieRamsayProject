@@ -12,7 +12,7 @@ using System.Net.Sockets;
 
 public class iainHands : MonoBehaviour
 {   
-
+    
     public GameObject gWriL;
 
     public GameObject gPinL0;
@@ -88,8 +88,10 @@ public class iainHands : MonoBehaviour
     private GameObject[] joint = new GameObject[52];
     int fc = 0;
 
- //   string remoteIPAddress = "192.168.1.118"; MSI
-    string remoteIPAddress = "192.168.1.164"; //alienware
+       string remoteIPAddress = "192.168.8.100"; //MSI
+   // string remoteIPAddress = "10.56.135.147"; //alienware
+    //string remoteIPAddress = "172.20.10.12"; //alienware
+
 
     // string remoteIPAddress = "127.0.0.1";
 
@@ -97,6 +99,8 @@ public class iainHands : MonoBehaviour
     UdpClient udpClient = new UdpClient();
     void Start()
     {
+        Debug.Log("Made Change to test github");
+
         tmpText.text = "Hello World";
 
         for (int i = 0; i<52; i++)
@@ -201,7 +205,7 @@ public class iainHands : MonoBehaviour
 
         // Send the byte array to the remote host
         udpClient.Send(combinedArray, combinedArray.Length, remoteIPAddress, remotePort);
-        tmpText.text += "Message sent via UDP v2!";
+        tmpText.text += "Message sent via UDP v2!" + remoteIPAddress + " " + remotePort;
 
         
 
