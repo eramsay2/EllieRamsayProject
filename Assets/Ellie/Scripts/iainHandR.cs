@@ -12,7 +12,8 @@ using System.Net.Sockets;
 
 public class iainHands : MonoBehaviour
 {   
-    
+    public GameObject gElbowL;
+
     public GameObject gWriL;
 
     public GameObject gPinL0;
@@ -44,6 +45,8 @@ public class iainHands : MonoBehaviour
     public GameObject gThuL2;
     public GameObject gThuL3;
     public GameObject gThuL4;
+
+    public GameObject gElbowR;
 
     public GameObject gWriR;
 
@@ -121,73 +124,77 @@ public class iainHands : MonoBehaviour
         long ticks = currentTime.Ticks;
 
         int k = 0;
-        joint[0].transform.position = gWriL.transform.position;
 
-        joint[1].transform.position = gPinL0.transform.position;
-        joint[2].transform.position = gPinL1.transform.position;
-        joint[3].transform.position = gPinL2.transform.position;
-        joint[4].transform.position = gPinL3.transform.position;
-        joint[5].transform.position = gPinL4.transform.position;
+        joint[0].transform.position = gElbowR.transform.position;
 
-        joint[6].transform.position = gRinL0.transform.position;
-        joint[7].transform.position = gRinL1.transform.position;
-        joint[8].transform.position = gRinL2.transform.position;
-        joint[9].transform.position = gRinL3.transform.position;
-        joint[10].transform.position = gRinL4.transform.position;
+        joint[1].transform.position = gWriL.transform.position;
 
-        joint[11].transform.position = gMidL0.transform.position;
-        joint[12].transform.position = gMidL1.transform.position;
-        joint[13].transform.position = gMidL2.transform.position;
-        joint[14].transform.position = gMidL3.transform.position;
-        joint[15].transform.position = gMidL4.transform.position;
+        joint[2].transform.position = gPinL0.transform.position;
+        joint[3].transform.position = gPinL1.transform.position;
+        joint[4].transform.position = gPinL2.transform.position;
+        joint[5].transform.position = gPinL3.transform.position;
+        joint[6].transform.position = gPinL4.transform.position;
 
-        joint[16].transform.position = gIndL0.transform.position;
-        joint[17].transform.position = gIndL1.transform.position;
-        joint[18].transform.position = gIndL2.transform.position;
-        joint[19].transform.position = gIndL3.transform.position;
-        joint[20].transform.position = gIndL4.transform.position;
+        joint[7].transform.position = gRinL0.transform.position;
+        joint[8].transform.position = gRinL1.transform.position;
+        joint[9].transform.position = gRinL2.transform.position;
+        joint[10].transform.position = gRinL3.transform.position;
+        joint[11].transform.position = gRinL4.transform.position;
 
-        joint[21].transform.position = gThuL0.transform.position;
-        joint[22].transform.position = gThuL1.transform.position;
-        joint[23].transform.position = gThuL2.transform.position;
-        joint[23].transform.position = gThuL3.transform.position;
-        joint[25].transform.position = gThuL4.transform.position;
+        joint[12].transform.position = gMidL0.transform.position;
+        joint[13].transform.position = gMidL1.transform.position;
+        joint[14].transform.position = gMidL2.transform.position;
+        joint[15].transform.position = gMidL3.transform.position;
+        joint[16].transform.position = gMidL4.transform.position;
+
+        joint[17].transform.position = gIndL0.transform.position;
+        joint[18].transform.position = gIndL1.transform.position;
+        joint[19].transform.position = gIndL2.transform.position;
+        joint[20].transform.position = gIndL3.transform.position;
+        joint[21].transform.position = gIndL4.transform.position;
+
+        joint[22].transform.position = gThuL0.transform.position;
+        joint[23].transform.position = gThuL1.transform.position;
+        joint[24].transform.position = gThuL2.transform.position;
+        joint[25].transform.position = gThuL3.transform.position;
+        joint[26].transform.position = gThuL4.transform.position;
+
+        joint[27].transform.position = gElbowR.transform.position;
+
+        joint[28].transform.position = gWriR.transform.position;
+
+        joint[29].transform.position = gPinR0.transform.position;
+        joint[30].transform.position = gPinR1.transform.position;
+        joint[31].transform.position = gPinR2.transform.position;
+        joint[32].transform.position = gPinR3.transform.position;
+        joint[33].transform.position = gPinR4.transform.position;
+
+        joint[34].transform.position = gRinR0.transform.position;
+        joint[35].transform.position = gRinR1.transform.position;
+        joint[36].transform.position = gRinR2.transform.position;
+        joint[37].transform.position = gRinR3.transform.position;
+        joint[38].transform.position = gRinR4.transform.position;
+
+        joint[39].transform.position = gMidR0.transform.position;
+        joint[40].transform.position = gMidR1.transform.position;
+        joint[41].transform.position = gMidR2.transform.position;
+        joint[42].transform.position = gMidR3.transform.position;
+        joint[43].transform.position = gMidR4.transform.position;
+
+        joint[44].transform.position = gIndR0.transform.position;
+        joint[45].transform.position = gIndR1.transform.position;
+        joint[46].transform.position = gIndR2.transform.position;
+        joint[47].transform.position = gIndR3.transform.position;
+        joint[48].transform.position = gIndR4.transform.position;
+
+        joint[49].transform.position = gThuR0.transform.position;
+        joint[50].transform.position = gThuR1.transform.position;
+        joint[51].transform.position = gThuR2.transform.position;
+        joint[52].transform.position = gThuR3.transform.position;
+        joint[53].transform.position = gThuR4.transform.position;
 
 
-        joint[26].transform.position = gWriR.transform.position;
-
-        joint[27].transform.position = gPinR0.transform.position;
-        joint[28].transform.position = gPinR1.transform.position;
-        joint[29].transform.position = gPinR2.transform.position;
-        joint[30].transform.position = gPinR3.transform.position;
-        joint[31].transform.position = gPinR4.transform.position;
-
-        joint[32].transform.position = gRinR0.transform.position;
-        joint[33].transform.position = gRinR1.transform.position;
-        joint[34].transform.position = gRinR2.transform.position;
-        joint[35].transform.position = gRinR3.transform.position;
-        joint[36].transform.position = gRinR4.transform.position;
-
-        joint[37].transform.position = gMidR0.transform.position;
-        joint[38].transform.position = gMidR1.transform.position;
-        joint[39].transform.position = gMidR2.transform.position;
-        joint[40].transform.position = gMidR3.transform.position;
-        joint[41].transform.position = gMidR4.transform.position;
-
-        joint[42].transform.position = gIndR0.transform.position;
-        joint[43].transform.position = gIndR1.transform.position;
-        joint[44].transform.position = gIndR2.transform.position;
-        joint[45].transform.position = gIndR3.transform.position;
-        joint[46].transform.position = gIndR4.transform.position;
-
-        joint[47].transform.position = gThuR0.transform.position;
-        joint[48].transform.position = gThuR1.transform.position;
-        joint[49].transform.position = gThuR2.transform.position;
-        joint[50].transform.position = gThuR3.transform.position;
-        joint[51].transform.position = gThuR4.transform.position;
-
-
-        for (int i = 0; i < 52; i++)
+        for (int i = 0; i < 54; i++)
         {
             xPos[i] = (short)(joint[i].transform.position.x * 1000);
             yPos[i] = (short)(joint[i].transform.position.y * 1000);
