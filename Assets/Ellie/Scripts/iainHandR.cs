@@ -85,14 +85,14 @@ public class iainHands : MonoBehaviour
     public GameObject gThuR4;
 
 
-    short[] xPos = new short[58];
-    short[] yPos = new short[58];
-    short[] zPos = new short[58];
+    short[] xPos = new short[57];
+    short[] yPos = new short[57];
+    short[] zPos = new short[57];
 
     byte [] coordsBuffer;
 
     public TextMeshProUGUI tmpText;
-    private GameObject[] joint = new GameObject[52];
+    private GameObject[] joint = new GameObject[57];
     int fc = 0;
 
        string remoteIPAddress = "192.168.8.100"; //MSI
@@ -110,7 +110,7 @@ public class iainHands : MonoBehaviour
 
         tmpText.text = "Hello World";
 
-        for (int i = 0; i<58; i++)
+        for (int i = 0; i<57; i++)
         {
             joint[i] = transform.GetChild(i).gameObject;  // Gets the first child
             Debug.Log("First child attached: " + joint[i].name);
@@ -202,7 +202,7 @@ public class iainHands : MonoBehaviour
         joint[57].transform.position = gThuR4.transform.position;
 
 
-        for (int i = 0; i < 58; i++)
+        for (int i = 0; i < 57; i++)
         {
             xPos[i] = (short)(joint[i].transform.position.x * 1000);
             yPos[i] = (short)(joint[i].transform.position.y * 1000);
