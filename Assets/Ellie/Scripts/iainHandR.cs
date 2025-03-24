@@ -85,9 +85,9 @@ public class iainHands : MonoBehaviour
     public GameObject gThuR4;
 
 
-    short[] xPos = new short[52];
-    short[] yPos = new short[52];
-    short[] zPos = new short[52];
+    short[] xPos = new short[58];
+    short[] yPos = new short[58];
+    short[] zPos = new short[58];
 
     byte [] coordsBuffer;
 
@@ -110,7 +110,7 @@ public class iainHands : MonoBehaviour
 
         tmpText.text = "Hello World";
 
-        for (int i = 0; i<52; i++)
+        for (int i = 0; i<58; i++)
         {
             joint[i] = transform.GetChild(i).gameObject;  // Gets the first child
             Debug.Log("First child attached: " + joint[i].name);
@@ -166,7 +166,7 @@ public class iainHands : MonoBehaviour
         joint[28].transform.position = gThuL4.transform.position;
 
         joint[29].transform.position = gClavicleR.transform.position;
-        joint[30].transform.position = gUpperArmR.transofrm.position;
+        joint[30].transform.position = gUpperArmR.transform.position;
         joint[31].transform.position = gLowerArmR.transform.position;
 
         joint[32].transform.position = gWriR.transform.position;
@@ -196,12 +196,13 @@ public class iainHands : MonoBehaviour
         joint[52].transform.position = gIndR4.transform.position;
 
         joint[53].transform.position = gThuR0.transform.position;
-        joint[54].transform.position = gThuR1.transform.position;
-        joint[55].transform.position = gThuR2.transform.position;
-        joint[56].transform.position = gThuR3.transform.position;
-        joint[57].transform.position = gThuR4.transform.position;
+        joint[55].transform.position = gThuR1.transform.position;
+        joint[56].transform.position = gThuR2.transform.position;
+        joint[57].transform.position = gThuR3.transform.position;
+        joint[58].transform.position = gThuR4.transform.position;
 
-        for (int i = 0; i < 57; i++)
+
+        for (int i = 0; i < 58; i++)
         {
             xPos[i] = (short)(joint[i].transform.position.x * 1000);
             yPos[i] = (short)(joint[i].transform.position.y * 1000);
