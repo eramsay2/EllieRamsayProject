@@ -196,10 +196,10 @@ public class iainHands : MonoBehaviour
         joint[52].transform.position = gIndR4.transform.position;
 
         joint[53].transform.position = gThuR0.transform.position;
-        joint[55].transform.position = gThuR1.transform.position;
-        joint[56].transform.position = gThuR2.transform.position;
-        joint[57].transform.position = gThuR3.transform.position;
-        joint[58].transform.position = gThuR4.transform.position;
+        joint[54].transform.position = gThuR1.transform.position;
+        joint[55].transform.position = gThuR2.transform.position;
+        joint[56].transform.position = gThuR3.transform.position;
+        joint[57].transform.position = gThuR4.transform.position;
 
 
         for (int i = 0; i < 58; i++)

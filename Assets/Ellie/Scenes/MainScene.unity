@@ -1773,6 +1773,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1110363163}
   - component: {fileID: 1110363164}
+  - component: {fileID: 1110363165}
   m_Layer: 0
   m_Name: ELLIEHANDS
   m_TagString: Untagged
@@ -1866,6 +1867,79 @@ MonoBehaviour:
   gThuR3: {fileID: 1123188108}
   gThuR4: {fileID: 1123188107}
   tmpText: {fileID: 0}
+--- !u!114 &1110363165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110363162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a4129ab3a6db415a9cff11ad488d1de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tmpText: {fileID: 0}
+  joint:
+  - {fileID: 599547135}
+  - {fileID: 599547134}
+  - {fileID: 599547133}
+  - {fileID: 261218670}
+  - {fileID: 1123188150}
+  - {fileID: 1123188149}
+  - {fileID: 1123188148}
+  - {fileID: 1123188147}
+  - {fileID: 1123188146}
+  - {fileID: 1123188145}
+  - {fileID: 1123188145}
+  - {fileID: 1123188144}
+  - {fileID: 1123188143}
+  - {fileID: 1123188142}
+  - {fileID: 1123188141}
+  - {fileID: 1123188141}
+  - {fileID: 1123188140}
+  - {fileID: 1123188139}
+  - {fileID: 1123188138}
+  - {fileID: 1123188137}
+  - {fileID: 1123188137}
+  - {fileID: 1123188136}
+  - {fileID: 1123188135}
+  - {fileID: 1123188134}
+  - {fileID: 1123188133}
+  - {fileID: 1123188132}
+  - {fileID: 1123188131}
+  - {fileID: 1123188130}
+  - {fileID: 1123188129}
+  - {fileID: 599547132}
+  - {fileID: 599547131}
+  - {fileID: 599547130}
+  - {fileID: 261218669}
+  - {fileID: 1123188127}
+  - {fileID: 261218668}
+  - {fileID: 1123188126}
+  - {fileID: 1123188125}
+  - {fileID: 1123188124}
+  - {fileID: 1123188123}
+  - {fileID: 1123188123}
+  - {fileID: 1123188122}
+  - {fileID: 1123188121}
+  - {fileID: 1123188120}
+  - {fileID: 1123188119}
+  - {fileID: 1123188119}
+  - {fileID: 1123188118}
+  - {fileID: 1123188117}
+  - {fileID: 1123188116}
+  - {fileID: 1123188115}
+  - {fileID: 1123188115}
+  - {fileID: 1123188114}
+  - {fileID: 1123188113}
+  - {fileID: 1123188112}
+  - {fileID: 1123188111}
+  - {fileID: 1123188110}
+  - {fileID: 1123188131}
+  - {fileID: 1123188130}
+  - {fileID: 1123188107}
+  - {fileID: 0}
 --- !u!1 &1123188107 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 341548598215004578, guid: f39a9d103c4129b42a53567f6cd8356a, type: 3}
