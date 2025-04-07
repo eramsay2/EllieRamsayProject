@@ -1803,7 +1803,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1110363162}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4edacbf24bb654bb6b26b39807d8deae, type: 3}
   m_Name: 
@@ -1866,7 +1866,6 @@ MonoBehaviour:
   gThuR2: {fileID: 1123188109}
   gThuR3: {fileID: 1123188108}
   gThuR4: {fileID: 1123188107}
-  tmpText: {fileID: 0}
 --- !u!114 &1110363165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1879,7 +1878,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a4129ab3a6db415a9cff11ad488d1de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tmpText: {fileID: 0}
   joint:
   - {fileID: 599547135}
   - {fileID: 599547134}
@@ -1939,7 +1937,6 @@ MonoBehaviour:
   - {fileID: 1123188131}
   - {fileID: 1123188130}
   - {fileID: 1123188107}
-  - {fileID: 0}
 --- !u!1 &1123188107 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 341548598215004578, guid: f39a9d103c4129b42a53567f6cd8356a, type: 3}
@@ -2449,6 +2446,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MyRiggedArms2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 90cb8778bec80470baec2f9fe627e6ef, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2463240947288183669, guid: 90cb8778bec80470baec2f9fe627e6ef, type: 3}
       propertyPath: m_LocalScale.x
       value: 0
@@ -2478,7 +2479,8 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 65702495048144492, guid: 90cb8778bec80470baec2f9fe627e6ef, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 90cb8778bec80470baec2f9fe627e6ef, type: 3}
       insertIndex: 0

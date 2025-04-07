@@ -91,7 +91,7 @@ public class iainHands : MonoBehaviour
 
     byte [] coordsBuffer;
 
-    public TextMeshProUGUI tmpText;
+    private TextMeshProUGUI tmpText;
     private GameObject[] joint = new GameObject[57];
     int fc = 0;
 
@@ -108,7 +108,6 @@ public class iainHands : MonoBehaviour
     {
         Debug.Log("Made Change to test github");
 
-        tmpText.text = "Hello World";
 
         for (int i = 0; i<57; i++)
         {
@@ -214,9 +213,9 @@ public class iainHands : MonoBehaviour
         byte[] byteArrayz = ConvertShortArrayToByteArray(zPos);
         byte[] combinedArray = CombineArrays(byteTicks, byteArrayx, byteArrayy, byteArrayz);
 
-        tmpText.text = fc.ToString() + " " + k.ToString() + " x: " + joint[0].transform.position.x.ToString("0.000");
+        /*tmpText.text = fc.ToString() + " " + k.ToString() + " x: " + joint[0].transform.position.x.ToString("0.000");
         tmpText.text += ticks.ToString() + "\r\n" ;
-        tmpText.text += combinedArray.Length.ToString() + "\r\n" ;
+        tmpText.text += combinedArray.Length.ToString() + "\r\n" ;*/
 
         // Send the byte array to the remote host
         udpClient.Send(combinedArray, combinedArray.Length, remoteIPAddress, remotePort);

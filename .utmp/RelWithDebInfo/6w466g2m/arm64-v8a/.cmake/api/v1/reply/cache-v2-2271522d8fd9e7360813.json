@@ -703,7 +703,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/Program Files/Unity/Hub/Editor/2023.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/SDK/cmake/3.22.1/bin/ninja.exe"
+			"value" : "C:/PROGRA~1/Unity/Hub/Editor/20231~1.3F1/Editor/Data/PLAYBA~1/ANDROI~1/SDK/cmake/322~1.1/bin/ninja.exe"
 		},
 		{
 			"name" : "CMAKE_MODULE_LINKER_FLAGS",
