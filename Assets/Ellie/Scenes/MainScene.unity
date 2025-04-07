@@ -3904,6 +3904,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3049367832034290394, guid: f90b5dd8c677d6f4abf2186ad3417517, type: 3}
+      propertyPath: m_UseDynamicAttach
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3049367832034290394, guid: f90b5dd8c677d6f4abf2186ad3417517, type: 3}
       propertyPath: m_ForceGravityOnDetach
       value: 1
       objectReference: {fileID: 0}
@@ -4585,6 +4589,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8186610394949671177, guid: 32f900ebdeb20174b89a583cccee3879, type: 3}
+      propertyPath: m_UseDynamicAttach
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8186610394949671177, guid: 32f900ebdeb20174b89a583cccee3879, type: 3}
       propertyPath: m_ForceGravityOnDetach
       value: 1
       objectReference: {fileID: 0}
@@ -4773,6 +4781,10 @@ PrefabInstance:
     - target: {fileID: 4318161335903713910, guid: fd9b30a8fdc684f41a01928f2ccb6ddb, type: 3}
       propertyPath: m_ThrowOnDetach
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4318161335903713910, guid: fd9b30a8fdc684f41a01928f2ccb6ddb, type: 3}
+      propertyPath: m_UseDynamicAttach
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4318161335903713910, guid: fd9b30a8fdc684f41a01928f2ccb6ddb, type: 3}
       propertyPath: m_ForceGravityOnDetach
@@ -6190,6 +6202,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6954406472729904964, guid: 991e382eca8f64d439bcd897a7041cc1, type: 3}
+      propertyPath: m_UseDynamicAttach
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6954406472729904964, guid: 991e382eca8f64d439bcd897a7041cc1, type: 3}
       propertyPath: m_ForceGravityOnDetach
       value: 1
       objectReference: {fileID: 0}
@@ -6615,6 +6631,10 @@ PrefabInstance:
     - target: {fileID: 2456947392362175959, guid: cbdc1ace92870cf47891eeccadd2215c, type: 3}
       propertyPath: m_ThrowOnDetach
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2456947392362175959, guid: cbdc1ace92870cf47891eeccadd2215c, type: 3}
+      propertyPath: m_UseDynamicAttach
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2456947392362175959, guid: cbdc1ace92870cf47891eeccadd2215c, type: 3}
       propertyPath: m_ForceGravityOnDetach
