@@ -6,7 +6,7 @@ using TMPro;
 
 public class PositionRecorder : MonoBehaviour
 {
-    public TextMeshProUGUI tmpText;
+    private TextMeshProUGUI tmpText;
     public GameObject[] joint = new GameObject[59]; // Updated array size to 59
     private List<string> recordedData = new List<string>();
     private bool isRecording = false;
@@ -27,12 +27,12 @@ public class PositionRecorder : MonoBehaviour
                     header += ",Frame" + (frameCount + 1); // One column per frame
                 }
                 recordedData.Add(header); // Add header row
-                tmpText.text = "Recording Started";
+                //tmpText.text = "Recording Started";
             }
             else
             {
                 SaveDataToFile();
-                tmpText.text = "Recording Stopped. Data Saved.";
+                //tmpText.text = "Recording Stopped. Data Saved.";
             }
         }
         
@@ -49,7 +49,7 @@ public class PositionRecorder : MonoBehaviour
                 recordedData.Add(data);
             }
 
-            tmpText.text = "Recording Frame: " + frameCount;
+            //tmpText.text = "Recording Frame: " + frameCount;
             frameCount++;
         }
     }

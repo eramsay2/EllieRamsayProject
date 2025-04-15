@@ -2,13 +2,13 @@
 - Project name: EllieRamsayProject
 - Unity version: Unity 2023.1.3f1
 - Active scene:
-  - Name: CustomIK
+  - Name: MainScene
   - Tags:
-    - Untagged, Respawn, Finish, EditorOnly, MainCamera, Player, GameController, RoomLight, SamplesInfoPanel
+    - Untagged, Respawn, Finish, EditorOnly, MainCamera, Player, GameController
   - Layers:
     - Default, TransparentFX, Ignore Raycast, Water, UI
 - Active game object:
-  - Name: XR Interaction Hands Setup
+  - Name: ELLIEHANDS
   - Tag: Untagged
   - Layer: Default
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->
