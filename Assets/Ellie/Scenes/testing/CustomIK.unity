@@ -563,6 +563,11 @@ Transform:
   m_Father: {fileID: 576831347}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &454250575 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8724088221210090612, guid: 5eccbf4be2c00e94689ee8062e4e7276, type: 3}
+  m_PrefabInstance: {fileID: 1203826950}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &499170840
 GameObject:
   m_ObjectHideFlags: 0
@@ -1185,6 +1190,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83e4e6cca11330d4088d729ab4fc9d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1203826952 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7990873191231833676, guid: 5eccbf4be2c00e94689ee8062e4e7276, type: 3}
+  m_PrefabInstance: {fileID: 1203826950}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1277298007
 GameObject:
   m_ObjectHideFlags: 0
@@ -1725,6 +1735,11 @@ MonoBehaviour:
     m_HintWeight: 1
     m_MaintainTargetPositionOffset: 0
     m_MaintainTargetRotationOffset: 0
+--- !u!4 &1865366261 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 760172173812383872, guid: 5eccbf4be2c00e94689ee8062e4e7276, type: 3}
+  m_PrefabInstance: {fileID: 1203826950}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1974289695
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2039,11 +2054,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7b9b82691014714abc9ae58eb16096c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VRR: {fileID: 0}
+  VRR: {fileID: 454250575}
   IKR: {fileID: 37961579}
-  VRL: {fileID: 0}
+  VRL: {fileID: 1865366261}
   IKL: {fileID: 48180868}
-  VRHead: {fileID: 0}
+  VRHead: {fileID: 1203826952}
   IKHead: {fileID: 1984705563}
   headPositionOffset: {x: 0, y: -0.15, z: 0}
   rotationOffsetL: {x: 220, y: 180, z: 90}
