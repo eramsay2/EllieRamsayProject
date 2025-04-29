@@ -1,5 +1,12 @@
 fileFormatVersion: 2
 guid: fcfea45d81778df47aec3c859c2f4f7c
+AssetOrigin:
+  serializedVersion: 1
+  productId: 82022
+  packageName: Oculus Integration (Deprecated)
+  packageVersion: 57.0.2-deprecated
+  assetPath: Assets/Oculus/Interaction/Samples/Objects/Environment/Tooltips/DialogVideos/Instruction_Poses.mp4
+  uploadId: 667590
 VideoClipImporter:
   externalObjects: {}
   serializedVersion: 2
