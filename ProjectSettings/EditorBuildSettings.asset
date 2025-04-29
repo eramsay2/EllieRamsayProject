@@ -4,7 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Ellie/Scenes/testing/CustomIK.unity
+    guid: 9f331a6b774dfab469099c5cb2fe5066
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: fe691fd508dc34545928b88a9861b878, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 93eb9ba336add1145889384bc29e2c20, type: 2}
