@@ -7,49 +7,56 @@ using TMPro;
 public class PositionRecorder : MonoBehaviour
 {
     private TextMeshProUGUI tmpText;
-    public GameObject[] joint = new GameObject[59]; // Updated array size to 59
+    public GameObject[] joint = new GameObject[59]; // You already have 59 joints
     private List<string> recordedData = new List<string>();
     private bool isRecording = false;
     private int frameCount = 0;
-    
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             isRecording = !isRecording;
+
             if (isRecording)
             {
                 recordedData.Clear();
-                string header = "Joint"; // First column will contain "Joint" label
-                // Add frame labels as columns (e.g., Frame1, Frame2, ...)
-                for (int i = 0; i < joint.Length; i++)
-                {
-                    header += ",Frame" + (frameCount + 1); // One column per frame
-                }
-                recordedData.Add(header); // Add header row
-                //tmpText.text = "Recording Started";
+                string header = "Frame,JointIndex,PosX,PosY,PosZ,RotW,RotX,RotY,RotZ,ScaleX,ScaleY,ScaleZ";
+                recordedData.Add(header);
+                frameCount = 0;
             }
             else
             {
                 SaveDataToFile();
-                //tmpText.text = "Recording Stopped. Data Saved.";
+                Debug.Log("Recording stopped.");
             }
         }
-        
+
         if (isRecording)
         {
-            // Create data for each joint for the current frame
-            string data = "";
             for (int i = 0; i < joint.Length; i++)
             {
-                // Record the joint's name and its position in that frame
-                data += "Joint" + i + "_X," + joint[i].transform.position.x.ToString("0.000");
-                data += "," + joint[i].transform.position.y.ToString("0.000");
-                data += "," + joint[i].transform.position.z.ToString("0.000");
-                recordedData.Add(data);
+                Transform t = joint[i].transform;
+
+                Vector3 pos = t.position;
+                Quaternion rot = t.rotation;
+                Vector3 scale = t.localScale;
+
+                string line = frameCount + "," + i + "," +
+                              pos.x.ToString("F5") + "," +
+                              pos.y.ToString("F5") + "," +
+                              pos.z.ToString("F5") + "," +
+                              rot.w.ToString("F5") + "," +
+                              rot.x.ToString("F5") + "," +
+                              rot.y.ToString("F5") + "," +
+                              rot.z.ToString("F5") + "," +
+                              scale.x.ToString("F5") + "," +
+                              scale.y.ToString("F5") + "," +
+                              scale.z.ToString("F5");
+
+                recordedData.Add(line);
             }
 
-            //tmpText.text = "Recording Frame: " + frameCount;
             frameCount++;
         }
     }
@@ -59,6 +66,6 @@ public class PositionRecorder : MonoBehaviour
         string filePath = Application.persistentDataPath + "/RecordedData.csv";
         File.WriteAllLines(filePath, recordedData);
         Debug.Log("Data saved to: " + filePath);
-        Application.OpenURL("file://" + filePath); // Automatically open file after saving
+        Application.OpenURL("file://" + filePath);
     }
 }
