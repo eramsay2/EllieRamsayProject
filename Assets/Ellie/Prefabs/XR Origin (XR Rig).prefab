@@ -2045,6 +2045,10 @@ PrefabInstance:
       propertyPath: m_RayOriginTransform
       value: 
       objectReference: {fileID: 7930648484246814612}
+    - target: {fileID: 7693184380767619946, guid: ad818c36731146e994540a1896ad8f24, type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 0.007
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2435,6 +2439,10 @@ PrefabInstance:
       propertyPath: m_RayOriginTransform
       value: 
       objectReference: {fileID: 1327564305182942067}
+    - target: {fileID: 7693184380767619946, guid: ad818c36731146e994540a1896ad8f24, type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 0.007
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
