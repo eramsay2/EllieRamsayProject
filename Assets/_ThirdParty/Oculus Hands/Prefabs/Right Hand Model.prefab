@@ -819,7 +819,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3637b758ff163493f8bb8b6d7e96d7ae, type: 2}
+  - {fileID: 2100000, guid: 49fa6d09f7ef8a14380800773de5cea1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -887,6 +887,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5686134208185136530}
   - component: {fileID: 5686134208192617028}
+  - component: {fileID: 2575589244828804761}
+  - component: {fileID: 2834416940616917678}
   m_Layer: 0
   m_Name: Right Hand Model
   m_TagString: Untagged
@@ -913,7 +915,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!95 &5686134208192617028
 Animator:
-  serializedVersion: 4
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -927,10 +929,81 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2575589244828804761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5686134208185362930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4bd29d7ba711e54f8ea623d931e391d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handType: 1
+  root: {fileID: 5686134208185136530}
+  animator: {fileID: 5686134208192617028}
+  fingerBones:
+  - {fileID: 5686134208185136546}
+  - {fileID: 5686134208185136556}
+  - {fileID: 5686134208185136558}
+  - {fileID: 5686134208185136554}
+  - {fileID: 5686134208185136564}
+  - {fileID: 5686134208185136566}
+  - {fileID: 5686134208185136562}
+  - {fileID: 5686134208185136572}
+  - {fileID: 5686134208185136574}
+  - {fileID: 5686134208185136568}
+  - {fileID: 5686134208185136516}
+  - {fileID: 5686134208185136518}
+  - {fileID: 5686134208185136512}
+  - {fileID: 5686134208185136524}
+  - {fileID: 5686134208185136526}
+  - {fileID: 5686134208185136520}
+--- !u!114 &2834416940616917678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5686134208185362930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3b6de0c8ebaa8f448cf7d381b9b306b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pinchAnimationAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Pinch Animation
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: eb5d0712-8631-4ab3-bb3e-510d56a3c241
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  gripAnimationAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Grip Animation
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 42d664db-5d17-425a-8517-43e23bb4f89c
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -3326005586356538449, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  handAnimator: {fileID: 0}
 --- !u!1 &5686134208185362932
 GameObject:
   m_ObjectHideFlags: 0
