@@ -1950,6 +1950,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 403290, guid: 4db618c02455fed47b97e0944ece83d9, type: 3}
   m_PrefabInstance: {fileID: 886244236}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &897951817 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8804444453898582787, guid: 56186ccf27ad7864681108ed88349071, type: 3}
+  m_PrefabInstance: {fileID: 1765367614}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &946683180
 GameObject:
   m_ObjectHideFlags: 0
@@ -2851,7 +2856,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12e40eb0419309e47b26f1aec4b9c60d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  csvFileName: TRIAL 02.06.2025
+  csvFileName: RecordedData
   joint:
   - {fileID: 1765367640}
   - {fileID: 1765367639}
@@ -2869,6 +2874,7 @@ MonoBehaviour:
   - {fileID: 1765367627}
   - {fileID: 1765367626}
   - {fileID: 1765367625}
+  - {fileID: 897951817}
   - {fileID: 1765367624}
   - {fileID: 1765367623}
   - {fileID: 1765367622}
@@ -2878,7 +2884,6 @@ MonoBehaviour:
   - {fileID: 1765367618}
   - {fileID: 1765367617}
   - {fileID: 1765367616}
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

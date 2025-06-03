@@ -8,12 +8,19 @@ public class PositionReplayer : MonoBehaviour
     [Tooltip("Name of the CSV file to load from persistent data path (e.g., RecordedData.csv)")]
     public string csvFileName = "RecordedData.csv";
 
-    public GameObject[] joint = new GameObject[19]; // Joints to apply transforms to
-    public float playbackSpeed = 0.033f; // Playback speed (approx. 30 FPS)
+    [Tooltip("Array of joints to animate")]
+    public GameObject[] joint = new GameObject[19];
+
+    [Tooltip("Playback speed in seconds per frame (e.g., 0.033 for ~30 FPS)")]
+    public float playbackSpeed = 0.033f;
+
+    [Tooltip("Root GameObject of the hand tracking to disable during playback")]
+    public GameObject handTrackingRoot;
 
     private List<FrameData> frames = new List<FrameData>();
-    private bool isPlaying = false;
     private int currentFrame = 0;
+    private bool isPlaying = false;
+    private Coroutine replayCoroutine;
 
     private class FrameData
     {
@@ -29,36 +36,35 @@ public class PositionReplayer : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("Persistent Data Path: " + Application.persistentDataPath);
         string fullPath = Path.Combine(Application.persistentDataPath, csvFileName);
+        Debug.Log("Persistent Data Path: " + fullPath);
         LoadCSV(fullPath);
     }
-
-    public GameObject handTrackingRoot; // Assign the root GameObject of hand tracking (e.g. RightHandAnchor or HandVisualRoot)
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
-         {
-             isPlaying = !isPlaying;
+        {
+            isPlaying = !isPlaying;
 
-             if (isPlaying)
-         {
-            if (handTrackingRoot != null)
-                handTrackingRoot.SetActive(false);  // Disable Oculus hand tracking
+            if (isPlaying)
+            {
+                if (handTrackingRoot != null)
+                    handTrackingRoot.SetActive(false); // Disable live hand tracking
 
-            currentFrame = 0;
-            StartCoroutine(Replay());
+                currentFrame = 0;
+                replayCoroutine = StartCoroutine(Replay());
             }
             else
             {
-            StopCoroutine(Replay());
+                if (replayCoroutine != null)
+                    StopCoroutine(replayCoroutine);
 
-            if (handTrackingRoot != null)
-                handTrackingRoot.SetActive(true);   // Re-enable after playback
+                if (handTrackingRoot != null)
+                    handTrackingRoot.SetActive(true); // Re-enable tracking
             }
+        }
     }
-}
 
     IEnumerator Replay()
     {
@@ -84,7 +90,11 @@ public class PositionReplayer : MonoBehaviour
             yield return new WaitForSeconds(playbackSpeed);
         }
 
+        // Finished playback
         isPlaying = false;
+
+        if (handTrackingRoot != null)
+            handTrackingRoot.SetActive(true);
     }
 
     void LoadCSV(string filePath)
@@ -97,14 +107,13 @@ public class PositionReplayer : MonoBehaviour
 
         string[] lines = File.ReadAllLines(filePath);
         frames.Clear();
-
         Dictionary<int, FrameData> tempFrames = new Dictionary<int, FrameData>();
 
         for (int i = 1; i < lines.Length; i++) // Skip header
         {
             string[] tokens = lines[i].Split(',');
 
-            if (tokens.Length < 12) continue; // Skip malformed lines
+            if (tokens.Length < 12) continue;
 
             int frameNumber = int.Parse(tokens[0]);
             int jointIndex = int.Parse(tokens[1]);
