@@ -5,8 +5,12 @@ using UnityEngine;
 
 public class PositionReplayer : MonoBehaviour
 {
-    public GameObject[] joint = new GameObject[59]; // Same joint order used in the recorder
-    public float playbackSpeed = 0.033f; // Around 30 FPS
+    [Tooltip("Name of the CSV file to load from persistent data path (e.g., RecordedData.csv)")]
+    public string csvFileName = "RecordedData.csv";
+
+    public GameObject[] joint = new GameObject[59]; // Joints to apply transforms to
+    public float playbackSpeed = 0.033f; // Playback speed (approx. 30 FPS)
+
     private List<FrameData> frames = new List<FrameData>();
     private bool isPlaying = false;
     private int currentFrame = 0;
@@ -25,7 +29,9 @@ public class PositionReplayer : MonoBehaviour
 
     void Start()
     {
-        LoadCSV(Application.persistentDataPath + "/RecordedData.csv");
+        Debug.Log("Persistent Data Path: " + Application.persistentDataPath);
+        string fullPath = Path.Combine(Application.persistentDataPath, csvFileName);
+        LoadCSV(fullPath);
     }
 
     void Update()
@@ -56,7 +62,7 @@ public class PositionReplayer : MonoBehaviour
                 int jointIndex = kvp.Key;
                 TransformData data = kvp.Value;
 
-                if (jointIndex >= 0 && jointIndex < joint.Length)
+                if (jointIndex >= 0 && jointIndex < joint.Length && joint[jointIndex] != null)
                 {
                     Transform t = joint[jointIndex].transform;
                     t.position = data.position;
@@ -76,7 +82,7 @@ public class PositionReplayer : MonoBehaviour
     {
         if (!File.Exists(filePath))
         {
-            Debug.LogWarning("CSV file not found: " + filePath);
+            Debug.LogWarning("CSV file not found at: " + filePath);
             return;
         }
 
@@ -85,9 +91,11 @@ public class PositionReplayer : MonoBehaviour
 
         Dictionary<int, FrameData> tempFrames = new Dictionary<int, FrameData>();
 
-        for (int i = 1; i < lines.Length; i++) // skip header
+        for (int i = 1; i < lines.Length; i++) // Skip header
         {
             string[] tokens = lines[i].Split(',');
+
+            if (tokens.Length < 12) continue; // Skip malformed lines
 
             int frameNumber = int.Parse(tokens[0]);
             int jointIndex = int.Parse(tokens[1]);
@@ -101,7 +109,7 @@ public class PositionReplayer : MonoBehaviour
                 float.Parse(tokens[6]),
                 float.Parse(tokens[7]),
                 float.Parse(tokens[8]),
-                float.Parse(tokens[5])); // Remember: Quaternion is w, x, y, z — w comes first in Unity
+                float.Parse(tokens[5])); // w, x, y, z
 
             Vector3 scale = new Vector3(
                 float.Parse(tokens[9]),
@@ -119,12 +127,12 @@ public class PositionReplayer : MonoBehaviour
             };
         }
 
-        // Sort frames by frame number
         for (int i = 0; i < tempFrames.Count; i++)
         {
-            frames.Add(tempFrames[i]);
+            if (tempFrames.ContainsKey(i))
+                frames.Add(tempFrames[i]);
         }
 
-        Debug.Log("Loaded " + frames.Count + " frames.");
+        Debug.Log("Loaded " + frames.Count + " frames from " + filePath);
     }
 }
