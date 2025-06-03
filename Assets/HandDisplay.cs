@@ -8,7 +8,7 @@ public class PositionReplayer : MonoBehaviour
     [Tooltip("Name of the CSV file to load from persistent data path (e.g., RecordedData.csv)")]
     public string csvFileName = "RecordedData.csv";
 
-    public GameObject[] joint = new GameObject[59]; // Joints to apply transforms to
+    public GameObject[] joint = new GameObject[19]; // Joints to apply transforms to
     public float playbackSpeed = 0.033f; // Playback speed (approx. 30 FPS)
 
     private List<FrameData> frames = new List<FrameData>();
@@ -34,22 +34,31 @@ public class PositionReplayer : MonoBehaviour
         LoadCSV(fullPath);
     }
 
+    public GameObject handTrackingRoot; // Assign the root GameObject of hand tracking (e.g. RightHandAnchor or HandVisualRoot)
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            isPlaying = !isPlaying;
-            if (isPlaying)
-            {
-                currentFrame = 0;
-                StartCoroutine(Replay());
+        if (Input.GetKeyDown(KeyCode.Space))
+         {
+             isPlaying = !isPlaying;
+
+             if (isPlaying)
+         {
+            if (handTrackingRoot != null)
+                handTrackingRoot.SetActive(false);  // Disable Oculus hand tracking
+
+            currentFrame = 0;
+            StartCoroutine(Replay());
             }
             else
             {
-                StopCoroutine(Replay());
+            StopCoroutine(Replay());
+
+            if (handTrackingRoot != null)
+                handTrackingRoot.SetActive(true);   // Re-enable after playback
             }
-        }
     }
+}
 
     IEnumerator Replay()
     {
