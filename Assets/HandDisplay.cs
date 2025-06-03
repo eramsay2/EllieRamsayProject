@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 
 public class PositionReplayer : MonoBehaviour
@@ -8,8 +10,8 @@ public class PositionReplayer : MonoBehaviour
     [Tooltip("Name of the CSV file to load from persistent data path (e.g., RecordedData.csv)")]
     public string csvFileName = "RecordedData.csv";
 
-    [Tooltip("Array of joints to animate")]
-    public GameObject[] joint = new GameObject[19];
+    [Tooltip("Array of joints to animate (should be size 59 for full hand)")]
+    public GameObject[] joint = new GameObject[59];
 
     [Tooltip("Playback speed in seconds per frame (e.g., 0.033 for ~30 FPS)")]
     public float playbackSpeed = 0.033f;
@@ -90,7 +92,6 @@ public class PositionReplayer : MonoBehaviour
             yield return new WaitForSeconds(playbackSpeed);
         }
 
-        // Finished playback
         isPlaying = false;
 
         if (handTrackingRoot != null)
@@ -119,20 +120,20 @@ public class PositionReplayer : MonoBehaviour
             int jointIndex = int.Parse(tokens[1]);
 
             Vector3 pos = new Vector3(
-                float.Parse(tokens[2]),
-                float.Parse(tokens[3]),
-                float.Parse(tokens[4]));
+                float.Parse(tokens[2], CultureInfo.InvariantCulture),
+                float.Parse(tokens[3], CultureInfo.InvariantCulture),
+                float.Parse(tokens[4], CultureInfo.InvariantCulture));
 
             Quaternion rot = new Quaternion(
-                float.Parse(tokens[6]),
-                float.Parse(tokens[7]),
-                float.Parse(tokens[8]),
-                float.Parse(tokens[5])); // w, x, y, z
+                float.Parse(tokens[6], CultureInfo.InvariantCulture),
+                float.Parse(tokens[7], CultureInfo.InvariantCulture),
+                float.Parse(tokens[8], CultureInfo.InvariantCulture),
+                float.Parse(tokens[5], CultureInfo.InvariantCulture)); // w, x, y, z
 
             Vector3 scale = new Vector3(
-                float.Parse(tokens[9]),
-                float.Parse(tokens[10]),
-                float.Parse(tokens[11]));
+                float.Parse(tokens[9], CultureInfo.InvariantCulture),
+                float.Parse(tokens[10], CultureInfo.InvariantCulture),
+                float.Parse(tokens[11], CultureInfo.InvariantCulture));
 
             if (!tempFrames.ContainsKey(frameNumber))
                 tempFrames[frameNumber] = new FrameData();
@@ -145,10 +146,9 @@ public class PositionReplayer : MonoBehaviour
             };
         }
 
-        for (int i = 0; i < tempFrames.Count; i++)
+        foreach (var key in tempFrames.Keys.OrderBy(k => k))
         {
-            if (tempFrames.ContainsKey(i))
-                frames.Add(tempFrames[i]);
+            frames.Add(tempFrames[key]);
         }
 
         Debug.Log("Loaded " + frames.Count + " frames from " + filePath);
