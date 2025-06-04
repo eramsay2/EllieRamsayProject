@@ -7,16 +7,9 @@ using UnityEngine;
 
 public class PositionReplayer : MonoBehaviour
 {
-    [Tooltip("Name of the CSV file to load from persistent data path (e.g., RecordedData.csv)")]
     public string csvFileName = "RecordedData.csv";
-
-    [Tooltip("Array of joints to animate (should be size 59 for full hand)")]
     public GameObject[] joint = new GameObject[59];
-
-    [Tooltip("Playback speed in seconds per frame (e.g., 0.033 for ~30 FPS)")]
     public float playbackSpeed = 0.033f;
-
-    [Tooltip("Root GameObject of the hand tracking to disable during playback")]
     public GameObject handTrackingRoot;
 
     private List<FrameData> frames = new List<FrameData>();
@@ -39,7 +32,7 @@ public class PositionReplayer : MonoBehaviour
     void Start()
     {
         string fullPath = Path.Combine(Application.persistentDataPath, csvFileName);
-        Debug.Log("Persistent Data Path: " + fullPath);
+        Debug.Log("[DEBUG] Loading CSV from: " + fullPath);
         LoadCSV(fullPath);
     }
 
@@ -48,22 +41,18 @@ public class PositionReplayer : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             isPlaying = !isPlaying;
+            Debug.Log("[DEBUG] Playback toggled: " + isPlaying);
 
             if (isPlaying)
             {
-                if (handTrackingRoot != null)
-                    handTrackingRoot.SetActive(false); // Disable live hand tracking
-
+                if (handTrackingRoot != null) handTrackingRoot.SetActive(false);
                 currentFrame = 0;
                 replayCoroutine = StartCoroutine(Replay());
             }
             else
             {
-                if (replayCoroutine != null)
-                    StopCoroutine(replayCoroutine);
-
-                if (handTrackingRoot != null)
-                    handTrackingRoot.SetActive(true); // Re-enable tracking
+                if (replayCoroutine != null) StopCoroutine(replayCoroutine);
+                if (handTrackingRoot != null) handTrackingRoot.SetActive(true);
             }
         }
     }
@@ -73,18 +62,37 @@ public class PositionReplayer : MonoBehaviour
         while (currentFrame < frames.Count)
         {
             FrameData frame = frames[currentFrame];
+            Debug.Log($"[DEBUG] Frame {currentFrame} — Joint count: {frame.jointData.Count}");
 
             foreach (var kvp in frame.jointData)
             {
                 int jointIndex = kvp.Key;
                 TransformData data = kvp.Value;
 
-                if (jointIndex >= 0 && jointIndex < joint.Length && joint[jointIndex] != null)
+                if (jointIndex >= 0 && jointIndex < joint.Length)
                 {
-                    Transform t = joint[jointIndex].transform;
-                    t.position = data.position;
-                    t.rotation = data.rotation;
-                    t.localScale = data.scale;
+                    GameObject jointObj = joint[jointIndex];
+
+                    if (jointObj != null)
+                    {
+                        Transform t = jointObj.transform;
+                        t.position = data.position;
+                        t.rotation = data.rotation;
+                        t.localScale = data.scale;
+
+                        if (jointIndex == 0) // Focus on the first joint for debug clarity
+                        {
+                            Debug.Log($"[DEBUG] Joint 0 — Pos: {t.position} | Rot: {t.rotation.eulerAngles} | Scale: {t.localScale}");
+                        }
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"[WARNING] joint[{jointIndex}] is null.");
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning($"[WARNING] Invalid joint index: {jointIndex}");
                 }
             }
 
@@ -93,16 +101,15 @@ public class PositionReplayer : MonoBehaviour
         }
 
         isPlaying = false;
-
-        if (handTrackingRoot != null)
-            handTrackingRoot.SetActive(true);
+        if (handTrackingRoot != null) handTrackingRoot.SetActive(true);
+        Debug.Log("[DEBUG] Playback complete.");
     }
 
     void LoadCSV(string filePath)
     {
         if (!File.Exists(filePath))
         {
-            Debug.LogWarning("CSV file not found at: " + filePath);
+            Debug.LogWarning("[ERROR] CSV file not found at: " + filePath);
             return;
         }
 
@@ -113,7 +120,6 @@ public class PositionReplayer : MonoBehaviour
         for (int i = 1; i < lines.Length; i++) // Skip header
         {
             string[] tokens = lines[i].Split(',');
-
             if (tokens.Length < 12) continue;
 
             int frameNumber = int.Parse(tokens[0]);
@@ -151,6 +157,6 @@ public class PositionReplayer : MonoBehaviour
             frames.Add(tempFrames[key]);
         }
 
-        Debug.Log("Loaded " + frames.Count + " frames from " + filePath);
+        Debug.Log($"[DEBUG] Loaded {frames.Count} frames from CSV.");
     }
 }
