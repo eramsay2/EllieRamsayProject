@@ -7,16 +7,9 @@ using UnityEngine;
 
 public class PositionReplayer : MonoBehaviour
 {
-    [Tooltip("Name of the CSV file to load from persistent data path (e.g., RecordedData.csv)")]
     public string csvFileName = "RecordedData.csv";
-
-    [Tooltip("Array of joints to animate (should be size 59 for full hand)")]
     public GameObject[] joint = new GameObject[59];
-
-    [Tooltip("Playback speed in seconds per frame (e.g., 0.033 for ~30 FPS)")]
     public float playbackSpeed = 0.033f;
-
-    [Tooltip("Root GameObject of the hand tracking to disable during playback")]
     public GameObject handTrackingRoot;
 
     private List<FrameData> frames = new List<FrameData>();
@@ -39,7 +32,7 @@ public class PositionReplayer : MonoBehaviour
     void Start()
     {
         string fullPath = Path.Combine(Application.persistentDataPath, csvFileName);
-        Debug.Log("Persistent Data Path: " + fullPath);
+        Debug.Log("CSV Path: " + fullPath);
         LoadCSV(fullPath);
     }
 
@@ -52,7 +45,7 @@ public class PositionReplayer : MonoBehaviour
             if (isPlaying)
             {
                 if (handTrackingRoot != null)
-                    handTrackingRoot.SetActive(false); // Disable live hand tracking
+                    handTrackingRoot.SetActive(false);
 
                 currentFrame = 0;
                 replayCoroutine = StartCoroutine(Replay());
@@ -63,7 +56,7 @@ public class PositionReplayer : MonoBehaviour
                     StopCoroutine(replayCoroutine);
 
                 if (handTrackingRoot != null)
-                    handTrackingRoot.SetActive(true); // Re-enable tracking
+                    handTrackingRoot.SetActive(true);
             }
         }
     }
@@ -82,8 +75,20 @@ public class PositionReplayer : MonoBehaviour
                 if (jointIndex >= 0 && jointIndex < joint.Length && joint[jointIndex] != null)
                 {
                     Transform t = joint[jointIndex].transform;
-                    t.position = data.position;
-                    t.rotation = data.rotation;
+
+                    // Apply global transforms for root joints
+                    if (jointIndex == 0 || jointIndex == 26) // 0 = R_Wrist, 26 = L_Wrist
+                    {
+                        t.position = data.position;
+                        t.rotation = data.rotation;
+                    }
+                    else // Local rotation only for child joints
+                    {
+                        t.localRotation = data.rotation;
+                        // Uncomment this if position becomes relevant later:
+                        // t.localPosition = data.position;
+                    }
+
                     t.localScale = data.scale;
                 }
             }
@@ -93,7 +98,6 @@ public class PositionReplayer : MonoBehaviour
         }
 
         isPlaying = false;
-
         if (handTrackingRoot != null)
             handTrackingRoot.SetActive(true);
     }
@@ -125,10 +129,10 @@ public class PositionReplayer : MonoBehaviour
                 float.Parse(tokens[4], CultureInfo.InvariantCulture));
 
             Quaternion rot = new Quaternion(
-                float.Parse(tokens[5], CultureInfo.InvariantCulture), // x
-                float.Parse(tokens[6], CultureInfo.InvariantCulture), // y
-                float.Parse(tokens[7], CultureInfo.InvariantCulture), // z
-                float.Parse(tokens[8], CultureInfo.InvariantCulture)); // w
+                float.Parse(tokens[6], CultureInfo.InvariantCulture),
+                float.Parse(tokens[7], CultureInfo.InvariantCulture),
+                float.Parse(tokens[8], CultureInfo.InvariantCulture),
+                float.Parse(tokens[5], CultureInfo.InvariantCulture)); // w, x, y, z
 
             Vector3 scale = new Vector3(
                 float.Parse(tokens[9], CultureInfo.InvariantCulture),
@@ -151,6 +155,8 @@ public class PositionReplayer : MonoBehaviour
             frames.Add(tempFrames[key]);
         }
 
-        Debug.Log("Loaded " + frames.Count + " frames from " + filePath);
+        Debug.Log("Loaded " + frames.Count + " frames.");
     }
 }
+
+

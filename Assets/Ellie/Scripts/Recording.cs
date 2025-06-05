@@ -7,7 +7,7 @@ using TMPro;
 public class PositionRecorder : MonoBehaviour
 {
     private TextMeshProUGUI tmpText;
-    public GameObject[] joint = new GameObject[59]; // You already have 59 joints
+    public GameObject[] joint = new GameObject[59]; // 59 joints
     private List<string> recordedData = new List<string>();
     private bool isRecording = false;
     private int frameCount = 0;
@@ -21,8 +21,11 @@ public class PositionRecorder : MonoBehaviour
             if (isRecording)
             {
                 recordedData.Clear();
-                string header = "Frame,JointIndex,PosX,PosY,PosZ,RotW,RotX,RotY,RotZ,ScaleX,ScaleY,ScaleZ";
+
+                // Proper header with 'FrameIndex'
+                string header = "FrameIndex,JointIndex,PosX,PosY,PosZ,RotW,RotX,RotY,RotZ,ScaleX,ScaleY,ScaleZ";
                 recordedData.Add(header);
+
                 frameCount = 0;
             }
             else
@@ -57,6 +60,7 @@ public class PositionRecorder : MonoBehaviour
                 recordedData.Add(line);
             }
 
+            // Increment frame count once per full joint set
             frameCount++;
         }
     }
