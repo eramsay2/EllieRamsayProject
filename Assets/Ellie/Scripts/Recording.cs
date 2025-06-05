@@ -12,8 +12,15 @@ public class PositionRecorder : MonoBehaviour
     private bool isRecording = false;
     private int frameCount = 0;
 
+    void Start()
+{
+    Debug.Log("PositionRecorder initialized.");
+}
+
     void Update()
     {
+        Debug.Log("Recording: " + isRecording + " | FrameCount: " + frameCount);
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             isRecording = !isRecording;
