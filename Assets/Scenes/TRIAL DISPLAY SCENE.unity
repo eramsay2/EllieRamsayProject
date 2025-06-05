@@ -610,6 +610,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 300014077}
+  - {fileID: 1765367615}
   m_Father: {fileID: 1479932779}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -811,10 +812,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: bf7151579c38e2a44be94ba8773876c1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1765367615}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf7151579c38e2a44be94ba8773876c1, type: 3}
 --- !u!4 &300014077 stripped
@@ -2916,8 +2914,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1479932779}
-  - component: {fileID: 1479932780}
   - component: {fileID: 1479932781}
+  - component: {fileID: 1479932780}
   m_Layer: 0
   m_Name: ELLIEHANDS
   m_TagString: Untagged
@@ -2950,10 +2948,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1479932777}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77ec15071205dc4449c1f7de4421e262, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1479932781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479932777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 12e40eb0419309e47b26f1aec4b9c60d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  csvFileName: RecordedData.csv
+  csvFile: {fileID: 4900000, guid: e92c9dd50539692408846aa124953ec4, type: 3}
   joint:
   - {fileID: 0}
   - {fileID: 0}
@@ -3015,19 +3025,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   playbackSpeed: 0.033
-  handTrackingRoot: {fileID: 208891516}
---- !u!114 &1479932781
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1479932777}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77ec15071205dc4449c1f7de4421e262, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  handTrackingRoot: {fileID: 1622016826}
 --- !u!1001 &1479964482
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3332,7 +3330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f609d5cb53df1d4f8f16575e8db6d5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightHandPose: {fileID: 0}
+  rightHandPose: {fileID: 2124905045}
 --- !u!1001 &1564948510
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3543,6 +3541,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 470806, guid: b145c1b505dbe2940bc8aeec8c124de4, type: 3}
   m_PrefabInstance: {fileID: 1609543941}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1622016826 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8511083097941404424, guid: 15be2b0b7ff667f4098454f263a1a6be, type: 3}
+  m_PrefabInstance: {fileID: 1910111741}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1741850873
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3723,7 +3726,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 300014077}
+    m_TransformParent: {fileID: 208891517}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 56186ccf27ad7864681108ed88349071, type: 3}
       propertyPath: m_RootOrder
@@ -5400,6 +5403,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1910111743}
     m_Modifications:
+    - target: {fileID: 2834416940616917678, guid: 1fd3a7c43c8190f4d8c167ebde694364, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5686134208185136530, guid: 1fd3a7c43c8190f4d8c167ebde694364, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -5452,61 +5459,28 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 49fa6d09f7ef8a14380800773de5cea1, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2834416940616917678, guid: 1fd3a7c43c8190f4d8c167ebde694364, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5686134208185362930, guid: 1fd3a7c43c8190f4d8c167ebde694364, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2124905043}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fd3a7c43c8190f4d8c167ebde694364, type: 3}
 --- !u!4 &2124905039 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5686134208185136530, guid: 1fd3a7c43c8190f4d8c167ebde694364, type: 3}
   m_PrefabInstance: {fileID: 2124905038}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2124905040 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5686134208185362930, guid: 1fd3a7c43c8190f4d8c167ebde694364, type: 3}
+--- !u!114 &2124905045 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2575589244828804761, guid: 1fd3a7c43c8190f4d8c167ebde694364, type: 3}
   m_PrefabInstance: {fileID: 2124905038}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2124905043
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2124905040}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3b6de0c8ebaa8f448cf7d381b9b306b, type: 3}
+  m_Script: {fileID: 11500000, guid: d4bd29d7ba711e54f8ea623d931e391d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pinchAnimationAction:
-    m_UseReference: 1
-    m_Action:
-      m_Name: Pinch Animation
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: eb5d0712-8631-4ab3-bb3e-510d56a3c241
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: 0}
-  gripAnimationAction:
-    m_UseReference: 1
-    m_Action:
-      m_Name: Grip Animation
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: 42d664db-5d17-425a-8517-43e23bb4f89c
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: -3326005586356538449, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  handAnimator: {fileID: 0}
 --- !u!1001 &2143206425
 PrefabInstance:
   m_ObjectHideFlags: 0
