@@ -1,15 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
-using System.IO;
 using System.Linq;
 using UnityEngine;
 
 public class PositionReplayer : MonoBehaviour
 {
-    public string csvFileName = "RecordedData.csv";
+    [Tooltip("Drag your RecordedData.csv file here from the Assets folder")]
+    public TextAsset csvFile;
+
+    [Tooltip("Assign 59 hand joint GameObjects in the correct order")]
     public GameObject[] joint = new GameObject[59];
+
+    [Tooltip("Time in seconds between frames")]
     public float playbackSpeed = 0.033f;
+
     public GameObject handTrackingRoot;
 
     private List<FrameData> frames = new List<FrameData>();
@@ -31,9 +36,14 @@ public class PositionReplayer : MonoBehaviour
 
     void Start()
     {
-        string fullPath = Path.Combine(Application.persistentDataPath, csvFileName);
-        Debug.Log("CSV Path: " + fullPath);
-        LoadCSV(fullPath);
+        if (csvFile != null)
+        {
+            LoadCSVFromText(csvFile.text);
+        }
+        else
+        {
+            Debug.LogWarning("CSV file not assigned in the Inspector!");
+        }
     }
 
     void Update()
@@ -76,16 +86,16 @@ public class PositionReplayer : MonoBehaviour
                 {
                     Transform t = joint[jointIndex].transform;
 
-                    // Apply global transforms for root joints
-                    if (jointIndex == 0 || jointIndex == 26) // 0 = R_Wrist, 26 = L_Wrist
+                    // Apply global transforms for root joints (wrist)
+                    if (jointIndex == 0 || jointIndex == 26)
                     {
                         t.position = data.position;
                         t.rotation = data.rotation;
                     }
-                    else // Local rotation only for child joints
+                    else
                     {
                         t.localRotation = data.rotation;
-                        // Uncomment this if position becomes relevant later:
+                        // Uncomment if needed:
                         // t.localPosition = data.position;
                     }
 
@@ -98,27 +108,23 @@ public class PositionReplayer : MonoBehaviour
         }
 
         isPlaying = false;
+
         if (handTrackingRoot != null)
             handTrackingRoot.SetActive(true);
     }
 
-    void LoadCSV(string filePath)
+    void LoadCSVFromText(string csvText)
     {
-        if (!File.Exists(filePath))
-        {
-            Debug.LogWarning("CSV file not found at: " + filePath);
-            return;
-        }
-
-        string[] lines = File.ReadAllLines(filePath);
+        string[] lines = csvText.Split(new[] { '\n', '\r' }, System.StringSplitOptions.RemoveEmptyEntries);
         frames.Clear();
         Dictionary<int, FrameData> tempFrames = new Dictionary<int, FrameData>();
 
-        for (int i = 1; i < lines.Length; i++) // Skip header
+        for (int i = 1; i < lines.Length; i++) // skip header
         {
             string[] tokens = lines[i].Split(',');
 
-            if (tokens.Length < 12) continue;
+            if (tokens.Length < 12)
+                continue;
 
             int frameNumber = int.Parse(tokens[0]);
             int jointIndex = int.Parse(tokens[1]);
@@ -155,8 +161,6 @@ public class PositionReplayer : MonoBehaviour
             frames.Add(tempFrames[key]);
         }
 
-        Debug.Log("Loaded " + frames.Count + " frames.");
+        Debug.Log("Loaded " + frames.Count + " frames from CSV.");
     }
 }
-
-
