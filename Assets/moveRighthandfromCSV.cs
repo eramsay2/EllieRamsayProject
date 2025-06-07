@@ -1,12 +1,14 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
+using System.Collections;
+using UnityEngine.Networking;
 
 public class moveRightHandFromCSV : MonoBehaviour
 {
     public Transform R_Wrist;
     public Transform R_ThumbTip;
-    public string path = @"C:\Temp\@Data\RecordedData.csv";  // Update this if needed
+    public string fileName = "RecordedData.csv";
 
     List<sTransform> lInput = new List<sTransform>();
 
@@ -35,75 +37,30 @@ public class moveRightHandFromCSV : MonoBehaviour
         }
     }
 
-    List<sTransform> ReadTransformsFromCSV(string filePath)
+    IEnumerator Start()
     {
-        List<sTransform> transformList = new List<sTransform>();
-        var lines = File.ReadAllLines(filePath);
+        string filePath = Path.Combine(Application.streamingAssetsPath, fileName);
+        string csvText = "";
 
-        foreach (string line in lines)
+#if UNITY_ANDROID && !UNITY_EDITOR
+        UnityWebRequest www = UnityWebRequest.Get(filePath);
+        yield return www.SendWebRequest();
+        if (www.result != UnityWebRequest.Result.Success)
         {
-            // Skip empty lines or header lines
-            if (string.IsNullOrWhiteSpace(line) || line.StartsWith("frame"))
-                continue;
-
-            string[] parts = line.Split(',');
-
-            if (parts.Length == 12)
-            {
-                try
-                {
-                    sTransform sCol = new sTransform
-                    {
-                        frame = int.Parse(parts[0]),
-                        jointIndex = int.Parse(parts[1]),
-                        posX = float.Parse(parts[2]),
-                        posY = float.Parse(parts[3]),
-                        posZ = float.Parse(parts[4]),
-                        rotW = float.Parse(parts[5]),
-                        rotX = float.Parse(parts[6]),
-                        rotY = float.Parse(parts[7]),
-                        rotZ = float.Parse(parts[8]),
-                        scaleX = float.Parse(parts[9]),
-                        scaleY = float.Parse(parts[10]),
-                        scaleZ = float.Parse(parts[11])
-                    };
-
-                    transformList.Add(sCol);
-                }
-                catch (System.FormatException ex)
-                {
-                    Debug.LogWarning($"Skipping line due to format error: {line}\n{ex.Message}");
-                }
-            }
-            else
-            {
-                Debug.LogWarning($"Skipping malformed line: {line}");
-            }
+            Debug.LogError("Failed to load file: " + filePath);
+            yield break;
         }
-
-        return transformList;
-    }
-
-    void AssignFrames(ref List<sTransform> transforms)
-    {
-        int currentFrame = 0;
-
-        for (int i = 0; i < transforms.Count; i++)
+        csvText = www.downloadHandler.text;
+#else
+        if (!File.Exists(filePath))
         {
-            if (i > 0 && transforms[i].jointIndex == 0)
-            {
-                currentFrame++;
-            }
-
-            var t = transforms[i];
-            t.frame = currentFrame;
-            transforms[i] = t;
+            Debug.LogError("CSV file not found: " + filePath);
+            yield break;
         }
-    }
+        csvText = File.ReadAllText(filePath);
+#endif
 
-    void Start()
-    {
-        lInput = ReadTransformsFromCSV(path);
+        lInput = ParseCSV(csvText);
         AssignFrames(ref lInput);
 
         foreach (var entry in lInput)
@@ -125,6 +82,64 @@ public class moveRightHandFromCSV : MonoBehaviour
         Debug.Log($"Loaded {listR_WristPos.Count} wrist frames and {listR_ThumbTipQua.Count} thumb tip frames.");
     }
 
+    List<sTransform> ParseCSV(string csvText)
+    {
+        List<sTransform> transformList = new List<sTransform>();
+        var lines = csvText.Split('\n');
+
+        foreach (string line in lines)
+        {
+            if (string.IsNullOrWhiteSpace(line) || line.StartsWith("frame"))
+                continue;
+
+            var parts = line.Trim().Split(',');
+            if (parts.Length == 12)
+            {
+                try
+                {
+                    sTransform sCol = new sTransform
+                    {
+                        frame = int.Parse(parts[0]),
+                        jointIndex = int.Parse(parts[1]),
+                        posX = float.Parse(parts[2]),
+                        posY = float.Parse(parts[3]),
+                        posZ = float.Parse(parts[4]),
+                        rotW = float.Parse(parts[5]),
+                        rotX = float.Parse(parts[6]),
+                        rotY = float.Parse(parts[7]),
+                        rotZ = float.Parse(parts[8]),
+                        scaleX = float.Parse(parts[9]),
+                        scaleY = float.Parse(parts[10]),
+                        scaleZ = float.Parse(parts[11])
+                    };
+                    transformList.Add(sCol);
+                }
+                catch
+                {
+                    Debug.LogWarning("Bad line skipped: " + line);
+                }
+            }
+        }
+
+        return transformList;
+    }
+
+    void AssignFrames(ref List<sTransform> transforms)
+    {
+        int currentFrame = 0;
+        for (int i = 0; i < transforms.Count; i++)
+        {
+            if (i > 0 && transforms[i].jointIndex == 0)
+            {
+                currentFrame++;
+            }
+
+            var t = transforms[i];
+            t.frame = currentFrame;
+            transforms[i] = t;
+        }
+    }
+
     int fc = 0;
 
     void Update()
@@ -141,12 +156,12 @@ public class moveRightHandFromCSV : MonoBehaviour
             {
                 R_ThumbTip.localRotation = listR_ThumbTipQua[fc];
             }
+
+            fc++;
         }
         else
         {
             fc = 0;
         }
-
-        fc++;
     }
 }
