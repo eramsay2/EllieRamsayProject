@@ -6,7 +6,7 @@ public class moveLeftHandFromCSV : MonoBehaviour
 {
     public Transform L_Wrist;
     public Transform L_ThumbTip;
-    public string path = @"C:\Temp\@Data\RecordedData.csv";  // Update this if needed
+    public string path = @"C:\Unity Projects\EllieRamsayProject\Assets\RecordedData.csv";  // Update this if needed
 
     List<sTransform> lInput = new List<sTransform>();
 
