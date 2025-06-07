@@ -2387,6 +2387,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MyRiggedArms3
       objectReference: {fileID: 0}
+    - target: {fileID: 4972054802357875784, guid: a50e2c8a0e9cbf34296b21eec48b7bb8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5424017250997677050, guid: a50e2c8a0e9cbf34296b21eec48b7bb8, type: 3}
       propertyPath: m_LocalScale.x
       value: 10
@@ -2518,7 +2522,7 @@ PrefabInstance:
     - target: {fileID: 5961332092523129849, guid: a50e2c8a0e9cbf34296b21eec48b7bb8, type: 3}
       propertyPath: VRHead
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7493651798929444031}
     - target: {fileID: 5961332092523129849, guid: a50e2c8a0e9cbf34296b21eec48b7bb8, type: 3}
       propertyPath: rotationOffsetL.x
       value: 0
