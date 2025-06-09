@@ -3361,7 +3361,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   R_Wrist: {fileID: 2020691236}
   R_ThumbTip: {fileID: 217560787}
-  fileName: SupinationPronationLeftRight.csv
+  fileName: SupinationPronation.csv
 --- !u!114 &1479932781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3369,14 +3369,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1479932777}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b34955f84dea334798fb2e950fac58f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   L_Wrist: {fileID: 300014079}
   L_ThumbTip: {fileID: 300014078}
-  fileName: SupinationPronationLeftRight.csv
+  fileName: SupinationPronation.csv
 --- !u!1001 &1479964482
 PrefabInstance:
   m_ObjectHideFlags: 0
