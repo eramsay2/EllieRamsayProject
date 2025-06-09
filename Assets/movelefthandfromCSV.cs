@@ -1,12 +1,14 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
+using System.Collections;
+using UnityEngine.Networking;
 
 public class moveLeftHandFromCSV : MonoBehaviour
 {
     public Transform L_Wrist;
     public Transform L_ThumbTip;
-    public string path = @"C:\Unity Projects\EllieRamsayProject\Assets\RecordedData.csv";  // Update this if needed
+    public string fileName = "RecordedData.csv";
 
     List<sTransform> lInput = new List<sTransform>();
 
@@ -35,18 +37,62 @@ public class moveLeftHandFromCSV : MonoBehaviour
         }
     }
 
-    List<sTransform> ReadTransformsFromCSV(string filePath)
+    IEnumerator Start()
+    {
+        string filePath = Path.Combine(Application.streamingAssetsPath, fileName);
+        string csvText = "";
+
+#if UNITY_ANDROID && !UNITY_EDITOR
+        UnityWebRequest www = UnityWebRequest.Get(filePath);
+        yield return www.SendWebRequest();
+        if (www.result != UnityWebRequest.Result.Success)
+        {
+            Debug.LogError("Failed to load file: " + filePath);
+            yield break;
+        }
+        csvText = www.downloadHandler.text;
+#else
+        if (!File.Exists(filePath))
+        {
+            Debug.LogError("CSV file not found: " + filePath);
+            yield break;
+        }
+        csvText = File.ReadAllText(filePath);
+#endif
+
+        lInput = ParseCSV(csvText);
+        AssignFrames(ref lInput);
+
+        foreach (var entry in lInput)
+        {
+            Vector3 pos = new Vector3(entry.posX, entry.posY, entry.posZ);
+            Quaternion rot = new Quaternion(entry.rotX, entry.rotY, entry.rotZ, entry.rotW);
+
+            if (entry.jointIndex == 26) // L_Wrist
+            {
+                listL_WristPos.Add(pos);
+                listL_WristQua.Add(rot);
+            }
+            else if (entry.jointIndex == 51) // L_ThumbTip
+            {
+                listL_ThumbTipQua.Add(rot);
+            }
+        }
+
+        Debug.Log($"Loaded {listL_WristPos.Count} left wrist frames and {listL_ThumbTipQua.Count} left thumb tip frames.");
+    }
+
+    List<sTransform> ParseCSV(string csvText)
     {
         List<sTransform> transformList = new List<sTransform>();
-        var lines = File.ReadAllLines(filePath);
+        var lines = csvText.Split('\n');
 
         foreach (string line in lines)
         {
             if (string.IsNullOrWhiteSpace(line) || line.StartsWith("frame"))
                 continue;
 
-            string[] parts = line.Split(',');
-
+            var parts = line.Trim().Split(',');
             if (parts.Length == 12)
             {
                 try
@@ -66,17 +112,12 @@ public class moveLeftHandFromCSV : MonoBehaviour
                         scaleY = float.Parse(parts[10]),
                         scaleZ = float.Parse(parts[11])
                     };
-
                     transformList.Add(sCol);
                 }
-                catch (System.FormatException ex)
+                catch
                 {
-                    Debug.LogWarning($"Skipping line due to format error: {line}\n{ex.Message}");
+                    Debug.LogWarning("Bad line skipped: " + line);
                 }
-            }
-            else
-            {
-                Debug.LogWarning($"Skipping malformed line: {line}");
             }
         }
 
@@ -86,10 +127,9 @@ public class moveLeftHandFromCSV : MonoBehaviour
     void AssignFrames(ref List<sTransform> transforms)
     {
         int currentFrame = 0;
-
         for (int i = 0; i < transforms.Count; i++)
         {
-            if (i > 0 && transforms[i].jointIndex == 0)
+            if (i > 0 && transforms[i].jointIndex == 26) // frame starts at L_Wrist
             {
                 currentFrame++;
             }
@@ -98,30 +138,6 @@ public class moveLeftHandFromCSV : MonoBehaviour
             t.frame = currentFrame;
             transforms[i] = t;
         }
-    }
-
-    void Start()
-    {
-        lInput = ReadTransformsFromCSV(path);
-        AssignFrames(ref lInput);
-
-        foreach (var entry in lInput)
-        {
-            Vector3 pos = new Vector3(entry.posX, entry.posY, entry.posZ);
-            Quaternion rot = new Quaternion(entry.rotX, entry.rotY, entry.rotZ, entry.rotW);
-
-            if (entry.jointIndex == 26)
-            {
-                listL_WristPos.Add(pos);
-                listL_WristQua.Add(rot);
-            }
-            else if (entry.jointIndex == 51)
-            {
-                listL_ThumbTipQua.Add(rot);
-            }
-        }
-
-        Debug.Log($"Loaded {listL_WristPos.Count} wrist frames and {listL_ThumbTipQua.Count} thumb tip frames.");
     }
 
     int fc = 0;
@@ -140,12 +156,12 @@ public class moveLeftHandFromCSV : MonoBehaviour
             {
                 L_ThumbTip.localRotation = listL_ThumbTipQua[fc];
             }
+
+            fc++;
         }
         else
         {
             fc = 0;
         }
-
-        fc++;
     }
 }

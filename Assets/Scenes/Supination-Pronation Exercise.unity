@@ -3361,7 +3361,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   R_Wrist: {fileID: 2020691236}
   R_ThumbTip: {fileID: 217560787}
-  fileName: RecordedData.csv
+  fileName: SupinationPronation.csv
 --- !u!114 &1479932781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3376,7 +3376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   L_Wrist: {fileID: 300014079}
   L_ThumbTip: {fileID: 300014078}
-  path: C:\Unity Projects\EllieRamsayProject\Assets\Resources\RecordedData.csv
+  fileName: SupinationPronation.csv
 --- !u!1001 &1479964482
 PrefabInstance:
   m_ObjectHideFlags: 0
