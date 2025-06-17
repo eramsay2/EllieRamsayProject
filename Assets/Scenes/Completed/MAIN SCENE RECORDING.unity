@@ -3177,8 +3177,8 @@ MonoBehaviour:
   - {fileID: 1910111746}
   - {fileID: 1910111745}
   - {fileID: 1910111744}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1562229593}
+  - {fileID: 1562229592}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -3504,6 +3504,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rightHandPose: {fileID: 0}
+--- !u!1 &1562229592 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2766212503428324877, guid: 2bcb3a23c3644734bbd64449d379698d, type: 3}
+  m_PrefabInstance: {fileID: 1367496173}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1562229593 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -2336658959302506480, guid: 2bcb3a23c3644734bbd64449d379698d, type: 3}
+  m_PrefabInstance: {fileID: 1367496173}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1564948510
 PrefabInstance:
   m_ObjectHideFlags: 0
