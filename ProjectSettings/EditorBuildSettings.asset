@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Trials/TRIAL DISPLAY SCENE  L+R HAND + FOREARMS.unity
-    guid: 85ee589be7d8a244a9fe23f72c6708e1
+    path: Assets/Scenes/Supination-Pronation Exercise.unity
+    guid: b1fab6d9106cc614d93f8eb7f9f80174
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: fe691fd508dc34545928b88a9861b878, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 93eb9ba336add1145889384bc29e2c20, type: 2}
