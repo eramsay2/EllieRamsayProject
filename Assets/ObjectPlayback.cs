@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class ObjectPlayback : MonoBehaviour
 {
-    [Tooltip("The CSV file name (e.g., RecordedData.csv), placed in Application.persistentDataPath")]
+    [Tooltip("The CSV file name inside the StreamingAssets folder, e.g. RecordedData.csv")]
     public string csvFileName = "RecordedData.csv";
 
-    public GameObject[] objectsToAnimate; // Assign in Inspector
+    public GameObject[] objectsToAnimate;
 
     private class FrameData
     {
@@ -23,8 +23,7 @@ public class ObjectPlayback : MonoBehaviour
 
     void Start()
     {
-        LoadCSVFromFile();
-        isPlaying = true;
+        StartCoroutine(LoadCSVFromStreamingAssets());
     }
 
     void Update()
@@ -49,24 +48,43 @@ public class ObjectPlayback : MonoBehaviour
         currentFrame++;
     }
 
-    void LoadCSVFromFile()
+    System.Collections.IEnumerator LoadCSVFromStreamingAssets()
     {
-        string filePath = Path.Combine(Application.persistentDataPath, csvFileName);
+        string filePath = Path.Combine(Application.streamingAssetsPath, csvFileName);
 
+        string fileContents = "";
+
+#if UNITY_ANDROID && !UNITY_EDITOR
+        // Android requires UnityWebRequest or WWW to access StreamingAssets
+        using (UnityEngine.Networking.UnityWebRequest www = UnityEngine.Networking.UnityWebRequest.Get(filePath))
+        {
+            yield return www.SendWebRequest();
+            if (www.result != UnityEngine.Networking.UnityWebRequest.Result.Success)
+            {
+                Debug.LogError("Failed to load CSV file: " + www.error);
+                yield break;
+            }
+            fileContents = www.downloadHandler.text;
+        }
+#else
         if (!File.Exists(filePath))
         {
-            Debug.LogError("CSV file not found: " + filePath);
-            return;
+            Debug.LogError("CSV file not found at: " + filePath);
+            yield break;
         }
 
-        string[] lines = File.ReadAllLines(filePath);
+        fileContents = File.ReadAllText(filePath);
+#endif
 
-        for (int i = 1; i < lines.Length; i++) // Skip header
+        string[] lines = fileContents.Split('\n');
+
+        for (int i = 1; i < lines.Length; i++) // skip header
         {
             string line = lines[i].Trim();
             if (string.IsNullOrEmpty(line)) continue;
 
             string[] parts = line.Split(',');
+
             if (parts.Length < 13) continue;
 
             string objectType = parts[1];
@@ -86,7 +104,7 @@ public class ObjectPlayback : MonoBehaviour
                 float.Parse(parts[7]),
                 float.Parse(parts[8]),
                 float.Parse(parts[9]),
-                float.Parse(parts[6]) // w is stored first
+                float.Parse(parts[6])
             );
 
             Vector3 scale = new Vector3(
@@ -108,5 +126,6 @@ public class ObjectPlayback : MonoBehaviour
         }
 
         Debug.Log("Loaded object animation data for " + objectTracks.Count + " objects from: " + filePath);
+        isPlaying = true;
     }
 }
