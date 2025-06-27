@@ -3323,6 +3323,7 @@ GameObject:
   - component: {fileID: 1479932779}
   - component: {fileID: 1479932781}
   - component: {fileID: 1479932780}
+  - component: {fileID: 1479932782}
   m_Layer: 0
   m_Name: ELLIEHANDS
   m_TagString: Untagged
@@ -3377,6 +3378,22 @@ MonoBehaviour:
   L_Wrist: {fileID: 300014079}
   L_ThumbTip: {fileID: 300014078}
   fileName: SupinationPronationLeftRight.csv
+--- !u!114 &1479932782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479932777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25868967914ab6c4fb7a100cd16d6e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  csvFileName: SupinationPronationLeftRight.csv
+  objectsToAnimate:
+  - {fileID: 919132149155446097, guid: 2bcb3a23c3644734bbd64449d379698d, type: 3}
+  - {fileID: 1796869198}
 --- !u!1001 &1479964482
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4248,6 +4265,11 @@ PrefabInstance:
 --- !u!4 &1796869197 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7922456910679486962, guid: cbdc1ace92870cf47891eeccadd2215c, type: 3}
+  m_PrefabInstance: {fileID: 1796869196}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1796869198 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4068240916012763926, guid: cbdc1ace92870cf47891eeccadd2215c, type: 3}
   m_PrefabInstance: {fileID: 1796869196}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1829151586
