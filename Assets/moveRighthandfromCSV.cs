@@ -10,7 +10,7 @@ public class moveRightHandFromCSV : MonoBehaviour
     public Transform R_ThumbTip;
     public string fileName = "RecordedData.csv";
 
-    List<sTransform> lInput = new List<sTransform>();
+    List<sTransform> rInput = new List<sTransform>();
 
     List<Vector3> listR_WristPos = new List<Vector3>();
     List<Quaternion> listR_WristQua = new List<Quaternion>();
@@ -60,26 +60,26 @@ public class moveRightHandFromCSV : MonoBehaviour
         csvText = File.ReadAllText(filePath);
 #endif
 
-        lInput = ParseCSV(csvText);
-        AssignFrames(ref lInput);
+        rInput = ParseCSV(csvText);
+        AssignFrames(ref rInput);
 
-        foreach (var entry in lInput)
+        foreach (var entry in rInput)
         {
             Vector3 pos = new Vector3(entry.posX, entry.posY, entry.posZ);
             Quaternion rot = new Quaternion(entry.rotX, entry.rotY, entry.rotZ, entry.rotW);
 
-            if (entry.jointIndex == 0)
+            if (entry.jointIndex == 0) // R_Wrist
             {
                 listR_WristPos.Add(pos);
                 listR_WristQua.Add(rot);
             }
-            else if (entry.jointIndex == 25)
+            else if (entry.jointIndex == 25) // R_ThumbTip
             {
                 listR_ThumbTipQua.Add(rot);
             }
         }
 
-        Debug.Log($"Loaded {listR_WristPos.Count} wrist frames and {listR_ThumbTipQua.Count} thumb tip frames.");
+        Debug.Log($"Loaded {listR_WristPos.Count} right wrist frames and {listR_ThumbTipQua.Count} right thumb tip frames.");
     }
 
     List<sTransform> ParseCSV(string csvText)
@@ -89,35 +89,42 @@ public class moveRightHandFromCSV : MonoBehaviour
 
         foreach (string line in lines)
         {
-            if (string.IsNullOrWhiteSpace(line) || line.StartsWith("frame"))
+            if (string.IsNullOrWhiteSpace(line) || line.StartsWith("FrameIndex"))
                 continue;
 
             var parts = line.Trim().Split(',');
-            if (parts.Length == 12)
+            if (parts.Length < 13)
+                continue;
+
+            try
             {
-                try
+                if (!parts[1].Equals("Joint"))
+                    continue;
+
+                string objectName = parts[2];
+                if (!objectName.StartsWith("Joint_")) continue;
+                int jointIndex = int.Parse(objectName.Replace("Joint_", ""));
+
+                sTransform sCol = new sTransform
                 {
-                    sTransform sCol = new sTransform
-                    {
-                        frame = int.Parse(parts[0]),
-                        jointIndex = int.Parse(parts[1]),
-                        posX = float.Parse(parts[2]),
-                        posY = float.Parse(parts[3]),
-                        posZ = float.Parse(parts[4]),
-                        rotW = float.Parse(parts[5]),
-                        rotX = float.Parse(parts[6]),
-                        rotY = float.Parse(parts[7]),
-                        rotZ = float.Parse(parts[8]),
-                        scaleX = float.Parse(parts[9]),
-                        scaleY = float.Parse(parts[10]),
-                        scaleZ = float.Parse(parts[11])
-                    };
-                    transformList.Add(sCol);
-                }
-                catch
-                {
-                    Debug.LogWarning("Bad line skipped: " + line);
-                }
+                    frame = int.Parse(parts[0]),
+                    jointIndex = jointIndex,
+                    posX = float.Parse(parts[3]),
+                    posY = float.Parse(parts[4]),
+                    posZ = float.Parse(parts[5]),
+                    rotW = float.Parse(parts[6]),
+                    rotX = float.Parse(parts[7]),
+                    rotY = float.Parse(parts[8]),
+                    rotZ = float.Parse(parts[9]),
+                    scaleX = float.Parse(parts[10]),
+                    scaleY = float.Parse(parts[11]),
+                    scaleZ = float.Parse(parts[12])
+                };
+                transformList.Add(sCol);
+            }
+            catch
+            {
+                Debug.LogWarning("Bad line skipped: " + line);
             }
         }
 
@@ -129,7 +136,7 @@ public class moveRightHandFromCSV : MonoBehaviour
         int currentFrame = 0;
         for (int i = 0; i < transforms.Count; i++)
         {
-            if (i > 0 && transforms[i].jointIndex == 0)
+            if (i > 0 && transforms[i].jointIndex == 0) // frame starts at R_Wrist
             {
                 currentFrame++;
             }

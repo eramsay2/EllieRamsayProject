@@ -30,6 +30,8 @@ public class ObjectPlayback : MonoBehaviour
     {
         if (!isPlaying) return;
 
+        bool anyTrackShorter = false;
+
         foreach (GameObject obj in objectsToAnimate)
         {
             if (obj == null || !objectTracks.ContainsKey(obj.name)) continue;
@@ -43,9 +45,30 @@ public class ObjectPlayback : MonoBehaviour
                 obj.transform.rotation = frame.rotation;
                 obj.transform.localScale = frame.scale;
             }
+            else
+            {
+                anyTrackShorter = true;
+            }
         }
 
         currentFrame++;
+
+        // Loop playback
+        if (anyTrackShorter || currentFrame >= GetMaxFrameCount())
+        {
+            currentFrame = 0;
+        }
+    }
+
+    int GetMaxFrameCount()
+    {
+        int max = 0;
+        foreach (var track in objectTracks.Values)
+        {
+            if (track.Count > max)
+                max = track.Count;
+        }
+        return max;
     }
 
     System.Collections.IEnumerator LoadCSVFromStreamingAssets()
@@ -55,7 +78,6 @@ public class ObjectPlayback : MonoBehaviour
         string fileContents = "";
 
 #if UNITY_ANDROID && !UNITY_EDITOR
-        // Android requires UnityWebRequest or WWW to access StreamingAssets
         using (UnityEngine.Networking.UnityWebRequest www = UnityEngine.Networking.UnityWebRequest.Get(filePath))
         {
             yield return www.SendWebRequest();

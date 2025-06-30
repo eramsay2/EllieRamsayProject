@@ -89,35 +89,44 @@ public class moveLeftHandFromCSV : MonoBehaviour
 
         foreach (string line in lines)
         {
-            if (string.IsNullOrWhiteSpace(line) || line.StartsWith("frame"))
+            if (string.IsNullOrWhiteSpace(line) || line.StartsWith("FrameIndex"))
                 continue;
 
             var parts = line.Trim().Split(',');
-            if (parts.Length == 12)
+            if (parts.Length < 13)
+                continue;
+
+            try
             {
-                try
+                // Only process joints
+                if (!parts[1].Equals("Joint"))
+                    continue;
+
+                // Parse ObjectName (e.g., "Joint_26") into jointIndex
+                string objectName = parts[2];
+                if (!objectName.StartsWith("Joint_")) continue;
+                int jointIndex = int.Parse(objectName.Replace("Joint_", ""));
+
+                sTransform sCol = new sTransform
                 {
-                    sTransform sCol = new sTransform
-                    {
-                        frame = int.Parse(parts[0]),
-                        jointIndex = int.Parse(parts[1]),
-                        posX = float.Parse(parts[2]),
-                        posY = float.Parse(parts[3]),
-                        posZ = float.Parse(parts[4]),
-                        rotW = float.Parse(parts[5]),
-                        rotX = float.Parse(parts[6]),
-                        rotY = float.Parse(parts[7]),
-                        rotZ = float.Parse(parts[8]),
-                        scaleX = float.Parse(parts[9]),
-                        scaleY = float.Parse(parts[10]),
-                        scaleZ = float.Parse(parts[11])
-                    };
-                    transformList.Add(sCol);
-                }
-                catch
-                {
-                    Debug.LogWarning("Bad line skipped: " + line);
-                }
+                    frame = int.Parse(parts[0]),
+                    jointIndex = jointIndex,
+                    posX = float.Parse(parts[3]),
+                    posY = float.Parse(parts[4]),
+                    posZ = float.Parse(parts[5]),
+                    rotW = float.Parse(parts[6]),
+                    rotX = float.Parse(parts[7]),
+                    rotY = float.Parse(parts[8]),
+                    rotZ = float.Parse(parts[9]),
+                    scaleX = float.Parse(parts[10]),
+                    scaleY = float.Parse(parts[11]),
+                    scaleZ = float.Parse(parts[12])
+                };
+                transformList.Add(sCol);
+            }
+            catch
+            {
+                Debug.LogWarning("Bad line skipped: " + line);
             }
         }
 
