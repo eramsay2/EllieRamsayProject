@@ -3055,7 +3055,7 @@ MonoBehaviour:
   - {fileID: 1910111745}
   - {fileID: 1910111744}
   objectsToTrack:
-  - {fileID: 0}
+  - {fileID: 1787436944}
   - {fileID: 1975365668}
 --- !u!1001 &1479964482
 PrefabInstance:
