@@ -34,9 +34,10 @@ public class ObjectPlayback : MonoBehaviour
 
         foreach (GameObject obj in objectsToAnimate)
         {
-            if (obj == null || !objectTracks.ContainsKey(obj.name)) continue;
+            if (obj == null) continue;
 
-            List<FrameData> track = objectTracks[obj.name];
+            string key = obj.name.Trim().ToLower(); // Normalized name
+            if (!objectTracks.TryGetValue(key, out List<FrameData> track)) continue;
 
             if (currentFrame < track.Count)
             {
@@ -110,7 +111,7 @@ public class ObjectPlayback : MonoBehaviour
             if (parts.Length < 13) continue;
 
             string objectType = parts[1];
-            string objectName = parts[2];
+            string objectName = parts[2].Trim().ToLower(); // Normalized name
 
             if (objectType != "Object") continue;
 
@@ -147,7 +148,12 @@ public class ObjectPlayback : MonoBehaviour
             });
         }
 
-        Debug.Log("Loaded object animation data for " + objectTracks.Count + " objects from: " + filePath);
+        // Debug loaded object names
+        foreach (var key in objectTracks.Keys)
+        {
+            Debug.Log("Loaded track for object: " + key);
+        }
+
         isPlaying = true;
     }
 }

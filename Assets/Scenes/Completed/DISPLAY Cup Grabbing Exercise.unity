@@ -272,6 +272,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5265673537726306345, guid: fd9b30a8fdc684f41a01928f2ccb6ddb, type: 3}
   m_PrefabInstance: {fileID: 8251238}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &10536339 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4068240916012763926, guid: cbdc1ace92870cf47891eeccadd2215c, type: 3}
+  m_PrefabInstance: {fileID: 1796869196}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &53358081
 GameObject:
   m_ObjectHideFlags: 0
@@ -3447,7 +3452,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   R_Wrist: {fileID: 2020691236}
   R_ThumbTip: {fileID: 217560787}
-  fileName: trialwithcupfail2.csv
+  fileName: TrialCupAndPills.csv
 --- !u!114 &1479932781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3462,7 +3467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   L_Wrist: {fileID: 300014079}
   L_ThumbTip: {fileID: 300014078}
-  fileName: trialwithcupfail2.csv
+  fileName: TrialCupAndPills.csv
 --- !u!114 &1479932782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3475,10 +3480,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25868967914ab6c4fb7a100cd16d6e3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  csvFileName: trialwithcupfail2 .csv
+  csvFileName: TrialCupAndPills.csv
   objectsToAnimate:
   - {fileID: 2092140521}
-  - {fileID: 1796869198}
+  - {fileID: 10536339}
+  - {fileID: 1546516018}
 --- !u!1001 &1479964482
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3761,6 +3767,11 @@ PrefabInstance:
 --- !u!4 &1546516017 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6712127860171524075, guid: 991e382eca8f64d439bcd897a7041cc1, type: 3}
+  m_PrefabInstance: {fileID: 1546516016}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1546516018 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6026471071757072253, guid: 991e382eca8f64d439bcd897a7041cc1, type: 3}
   m_PrefabInstance: {fileID: 1546516016}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1564948510
@@ -4350,11 +4361,6 @@ PrefabInstance:
 --- !u!4 &1796869197 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7922456910679486962, guid: cbdc1ace92870cf47891eeccadd2215c, type: 3}
-  m_PrefabInstance: {fileID: 1796869196}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1796869198 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4068240916012763926, guid: cbdc1ace92870cf47891eeccadd2215c, type: 3}
   m_PrefabInstance: {fileID: 1796869196}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1829151586
@@ -5249,7 +5255,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2bcb3a23c3644734bbd64449d379698d, type: 3}
       propertyPath: m_Name
-      value: Cup tea
+      value: TeaCup
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
