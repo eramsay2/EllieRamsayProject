@@ -3452,7 +3452,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   R_Wrist: {fileID: 2020691236}
   R_ThumbTip: {fileID: 217560787}
-  fileName: TrialCupAndPills.csv
+  fileName: TrialCupPickUp2.csv
 --- !u!114 &1479932781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3467,7 +3467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   L_Wrist: {fileID: 300014079}
   L_ThumbTip: {fileID: 300014078}
-  fileName: TrialCupAndPills.csv
+  fileName: TrialCupPickUp2.csv
 --- !u!114 &1479932782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3480,7 +3480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25868967914ab6c4fb7a100cd16d6e3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  csvFileName: TrialCupAndPills.csv
+  csvFileName: TrialCupPickUp2.csv
   objectsToAnimate:
   - {fileID: 2092140521}
   - {fileID: 10536339}
