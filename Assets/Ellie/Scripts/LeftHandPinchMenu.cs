@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit.Inputs;
 
 public class LeftHandPinchMenu : MonoBehaviour
 {
@@ -9,7 +10,14 @@ public class LeftHandPinchMenu : MonoBehaviour
     [Header("Menu to Toggle")]
     public GameObject menuUI;
 
+    [SerializeField] private EnableDisableHands ToggleHands;
+
     private bool wasPinching = false;
+
+    private void Start()
+    {
+        ToggleHands = GameObject.Find("XR Origin (XR Rig)").GetComponent<EnableDisableHands>();
+    }
 
     void OnEnable()
     {
@@ -40,6 +48,7 @@ public class LeftHandPinchMenu : MonoBehaviour
         if (menuUI != null)
         {
             menuUI.SetActive(!menuUI.activeSelf);
+            ToggleHands.ToggleHands();
         }
     }
 }
