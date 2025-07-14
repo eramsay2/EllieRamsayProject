@@ -11,7 +11,7 @@ public class SceneLoader : MonoBehaviour
 
     private void Update()
     {
-        if (Load)
+        if (Load) //Used for debugging in the editor. Tick the Load box in the inspector and it will load that scene
         {
             Load = false;
             LoadScene();
@@ -19,6 +19,7 @@ public class SceneLoader : MonoBehaviour
     }
     public void LoadScene()
     {
+        //Loads the scene
         SceneManager.LoadScene(NewSceneNumber);
     }
 }
