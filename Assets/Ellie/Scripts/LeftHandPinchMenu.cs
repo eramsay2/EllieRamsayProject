@@ -25,7 +25,7 @@ public class LeftHandPinchMenu : MonoBehaviour
     {
         // indexPressed is typically a float (0.0 to 1.0)
         float pinchValue = leftIndexPressed.action.ReadValue<float>();
-        bool isPinching = pinchValue > 0.9f;
+        bool isPinching = pinchValue > 0.8f;
 
         if (isPinching && !wasPinching)
         {
