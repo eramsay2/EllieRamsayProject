@@ -10,7 +10,7 @@ public class LeftHandPinchMenu : MonoBehaviour
     [Header("Menu to Toggle")]
     public GameObject menuUI;
 
-    [SerializeField] private EnableDisableHands ToggleHands;
+    private EnableDisableHands ToggleHands;
 
     private bool wasPinching = false;
 
