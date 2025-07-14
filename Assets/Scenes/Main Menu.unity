@@ -5376,6 +5376,14 @@ PrefabInstance:
       propertyPath: NewSceneNumber
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2989355678842660091, guid: 78bb187341452f64fae4293c790361b4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4276598688995747980, guid: 78bb187341452f64fae4293c790361b4, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 647334064}
     - target: {fileID: 5573573208284026366, guid: 78bb187341452f64fae4293c790361b4, type: 3}
       propertyPath: m_text
       value: Supination-Pronation
@@ -5387,6 +5395,22 @@ PrefabInstance:
     - target: {fileID: 5573573208284026366, guid: 78bb187341452f64fae4293c790361b4, type: 3}
       propertyPath: m_overflowMode
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7252903850040370491, guid: 78bb187341452f64fae4293c790361b4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7252903850040370491, guid: 78bb187341452f64fae4293c790361b4, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7252903850040370491, guid: 78bb187341452f64fae4293c790361b4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7252903850040370491, guid: 78bb187341452f64fae4293c790361b4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8864036214126804170, guid: 78bb187341452f64fae4293c790361b4, type: 3}
       propertyPath: m_Name

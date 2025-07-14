@@ -369,7 +369,7 @@ GameObject:
   - component: {fileID: 5474369321879826785}
   - component: {fileID: 1337792712967568519}
   m_Layer: 5
-  m_Name: Scene Button
+  m_Name: Select Scene Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
