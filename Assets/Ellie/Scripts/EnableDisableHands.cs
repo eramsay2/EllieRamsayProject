@@ -11,10 +11,15 @@ public class EnableDisableHands : MonoBehaviour
     [SerializeField] private GameObject LeftHand;
     [SerializeField] private GameObject RightHand;
 
+    private bool enableHands = false;
+
     public void ToggleHands()
     {
-        modalityManager.enabled = (!modalityManager.enabled);
-        LeftHand.SetActive(!modalityManager.enabled);
-        RightHand.SetActive(!modalityManager.enabled);
+        enableHands = !enableHands;
+
+        modalityManager.enabled = (enableHands);
+
+        LeftHand.SetActive(enableHands);
+        RightHand.SetActive(enableHands);
     }
 }
