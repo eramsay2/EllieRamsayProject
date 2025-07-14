@@ -1,18 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Header("New Scene Build Number")]
+    [SerializeField] private int NewSceneNumber;
 
-    // Update is called once per frame
-    void Update()
+    [Header("Debugging")]
+    [SerializeField] private bool Load = false;
+
+    private void Update()
     {
-        
+        if (Load)
+        {
+            Load = false;
+            LoadScene();
+        }
+    }
+    public void LoadScene()
+    {
+        SceneManager.LoadScene(NewSceneNumber);
     }
 }
