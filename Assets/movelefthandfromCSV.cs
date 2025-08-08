@@ -6,36 +6,24 @@ using UnityEngine.Networking;
 
 public class moveLeftHandFromCSV : MonoBehaviour
 {
-    public Transform L_Wrist;
-    public Transform L_ThumbTip;
-    public string fileName = "RecordedData.csv";
+    [Tooltip("All left-hand joints in order: Joint_26 to Joint_51")]
+    public Transform[] leftHandJoints;
 
-    List<sTransform> lInput = new List<sTransform>();
+    public string fileName = "TrialPillsBothHandsRepeated.csv";
+    public float secondsPerFrame = 0.033f;
 
-    List<Vector3> listL_WristPos = new List<Vector3>();
-    List<Quaternion> listL_WristQua = new List<Quaternion>();
-    List<Quaternion> listL_ThumbTipQua = new List<Quaternion>();
-
-    public struct sTransform
+    private struct JointFrame
     {
         public int frame;
         public int jointIndex;
-        public float posX, posY, posZ;
-        public float rotW, rotX, rotY, rotZ;
-        public float scaleX, scaleY, scaleZ;
-
-        public sTransform(int frame, int jointIndex,
-            float posX, float posY, float posZ,
-            float rotW, float rotX, float rotY, float rotZ,
-            float scaleX, float scaleY, float scaleZ)
-        {
-            this.frame = frame;
-            this.jointIndex = jointIndex;
-            this.posX = posX; this.posY = posY; this.posZ = posZ;
-            this.rotW = rotW; this.rotX = rotX; this.rotY = rotY; this.rotZ = rotZ;
-            this.scaleX = scaleX; this.scaleY = scaleY; this.scaleZ = scaleZ;
-        }
+        public Vector3 position;
+        public Quaternion rotation;
+        public Vector3 scale;
     }
+
+    private List<JointFrame> csvData = new List<JointFrame>();
+    private int currentFrame = 0;
+    private int totalFrames = 0;
 
     IEnumerator Start()
     {
@@ -60,31 +48,16 @@ public class moveLeftHandFromCSV : MonoBehaviour
         csvText = File.ReadAllText(filePath);
 #endif
 
-        lInput = ParseCSV(csvText);
-        AssignFrames(ref lInput);
+        ParseCSV(csvText);
+        AssignFrames();
+        totalFrames = csvData[csvData.Count - 1].frame + 1;
 
-        foreach (var entry in lInput)
-        {
-            Vector3 pos = new Vector3(entry.posX, entry.posY, entry.posZ);
-            Quaternion rot = new Quaternion(entry.rotX, entry.rotY, entry.rotZ, entry.rotW);
-
-            if (entry.jointIndex == 26) // L_Wrist
-            {
-                listL_WristPos.Add(pos);
-                listL_WristQua.Add(rot);
-            }
-            else if (entry.jointIndex == 51) // L_ThumbTip
-            {
-                listL_ThumbTipQua.Add(rot);
-            }
-        }
-
-        Debug.Log($"Loaded {listL_WristPos.Count} left wrist frames and {listL_ThumbTipQua.Count} left thumb tip frames.");
+        Debug.Log($"Loaded {totalFrames} frames for left hand.");
+        StartCoroutine(Playback());
     }
 
-    List<sTransform> ParseCSV(string csvText)
+    void ParseCSV(string csvText)
     {
-        List<sTransform> transformList = new List<sTransform>();
         var lines = csvText.Split('\n');
 
         foreach (string line in lines)
@@ -96,81 +69,96 @@ public class moveLeftHandFromCSV : MonoBehaviour
             if (parts.Length < 13)
                 continue;
 
-            try
+            // Only joints
+            if (!parts[1].Equals("Joint"))
+                continue;
+
+            string objectName = parts[2];
+            if (!objectName.StartsWith("Joint_")) continue;
+            int jointIndex = int.Parse(objectName.Replace("Joint_", ""));
+
+            // Only process left-hand joints (26–51)
+            if (jointIndex < 26 || jointIndex > 51) continue;
+
+            JointFrame jf = new JointFrame
             {
-                // Only process joints
-                if (!parts[1].Equals("Joint"))
-                    continue;
+                frame = int.Parse(parts[0]),
+                jointIndex = jointIndex,
+                position = new Vector3(
+                    float.Parse(parts[3]),
+                    float.Parse(parts[4]),
+                    float.Parse(parts[5])
+                ),
+                rotation = new Quaternion(
+                    float.Parse(parts[7]),
+                    float.Parse(parts[8]),
+                    float.Parse(parts[9]),
+                    float.Parse(parts[6])
+                ),
+                scale = new Vector3(
+                    float.Parse(parts[10]),
+                    float.Parse(parts[11]),
+                    float.Parse(parts[12])
+                )
+            };
 
-                // Parse ObjectName (e.g., "Joint_26") into jointIndex
-                string objectName = parts[2];
-                if (!objectName.StartsWith("Joint_")) continue;
-                int jointIndex = int.Parse(objectName.Replace("Joint_", ""));
-
-                sTransform sCol = new sTransform
-                {
-                    frame = int.Parse(parts[0]),
-                    jointIndex = jointIndex,
-                    posX = float.Parse(parts[3]),
-                    posY = float.Parse(parts[4]),
-                    posZ = float.Parse(parts[5]),
-                    rotW = float.Parse(parts[6]),
-                    rotX = float.Parse(parts[7]),
-                    rotY = float.Parse(parts[8]),
-                    rotZ = float.Parse(parts[9]),
-                    scaleX = float.Parse(parts[10]),
-                    scaleY = float.Parse(parts[11]),
-                    scaleZ = float.Parse(parts[12])
-                };
-                transformList.Add(sCol);
-            }
-            catch
-            {
-                Debug.LogWarning("Bad line skipped: " + line);
-            }
-        }
-
-        return transformList;
-    }
-
-    void AssignFrames(ref List<sTransform> transforms)
-    {
-        int currentFrame = 0;
-        for (int i = 0; i < transforms.Count; i++)
-        {
-            if (i > 0 && transforms[i].jointIndex == 26) // frame starts at L_Wrist
-            {
-                currentFrame++;
-            }
-
-            var t = transforms[i];
-            t.frame = currentFrame;
-            transforms[i] = t;
+            csvData.Add(jf);
         }
     }
 
-    int fc = 0;
-
-    void Update()
+    void AssignFrames()
     {
-        if (listL_WristPos.Count == 0 || listL_ThumbTipQua.Count == 0)
-            return;
-
-        if (fc < listL_WristPos.Count)
+        int currentFrameNum = 0;
+        for (int i = 0; i < csvData.Count; i++)
         {
-            L_Wrist.position = listL_WristPos[fc];
-            L_Wrist.rotation = listL_WristQua[fc];
+            if (i > 0 && csvData[i].jointIndex == 26) // new frame starts at L_Wrist
+                currentFrameNum++;
 
-            if (fc < listL_ThumbTipQua.Count)
+            var temp = csvData[i];
+            temp.frame = currentFrameNum;
+            csvData[i] = temp;
+        }
+    }
+
+    IEnumerator Playback()
+    {
+        while (true)
+        {
+            ApplyFrame(currentFrame);
+            currentFrame++;
+            if (currentFrame >= totalFrames) currentFrame = 0;
+            yield return new WaitForSeconds(secondsPerFrame);
+        }
+    }
+
+    void ApplyFrame(int frameNum)
+    {
+        // Apply all joints for this frame
+        for (int j = 0; j < leftHandJoints.Length; j++)
+        {
+            if (leftHandJoints[j] == null) continue;
+            int csvJointIndex = 26 + j;
+
+            // Find the data for this frame/joint
+            JointFrame? jf = csvData.Find(x => x.frame == frameNum && x.jointIndex == csvJointIndex);
+            if (jf == null) continue;
+
+            if (csvJointIndex == 26)
             {
-                L_ThumbTip.localRotation = listL_ThumbTipQua[fc];
+                // Root joint gets position + global rotation
+                leftHandJoints[j].position = jf.Value.position;
+                leftHandJoints[j].rotation = jf.Value.rotation;
+            }
+            else
+            {
+                // Convert global to local rotation
+                Quaternion parentGlobal = leftHandJoints[j].parent.rotation;
+                Quaternion localRot = Quaternion.Inverse(parentGlobal) * jf.Value.rotation;
+                leftHandJoints[j].localRotation = localRot;
             }
 
-            fc++;
-        }
-        else
-        {
-            fc = 0;
+            // Optional: Apply scale
+            leftHandJoints[j].localScale = jf.Value.scale;
         }
     }
 }

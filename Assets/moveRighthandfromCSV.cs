@@ -6,16 +6,17 @@ using UnityEngine.Networking;
 
 public class moveRightHandFromCSV : MonoBehaviour
 {
-    public Transform R_Wrist;
-    public Transform R_ThumbTip;
+    public Transform[] rightHandJoints; // 0–25 in CSV
     public string fileName = "RecordedData.csv";
+    public float secondsPerFrame = 0.033f; // playback speed in seconds per frame
 
-    List<sTransform> rInput = new List<sTransform>();
+    private List<sTransform> rInput = new List<sTransform>();
+    private List<Vector3>[] jointPositions;
+    private List<Quaternion>[] jointRotations;
+    private int currentFrame = 0;
+    private float frameTimer = 0f;
 
-    List<Vector3> listR_WristPos = new List<Vector3>();
-    List<Quaternion> listR_WristQua = new List<Quaternion>();
-    List<Quaternion> listR_ThumbTipQua = new List<Quaternion>();
-
+    [System.Serializable]
     public struct sTransform
     {
         public int frame;
@@ -23,18 +24,6 @@ public class moveRightHandFromCSV : MonoBehaviour
         public float posX, posY, posZ;
         public float rotW, rotX, rotY, rotZ;
         public float scaleX, scaleY, scaleZ;
-
-        public sTransform(int frame, int jointIndex,
-            float posX, float posY, float posZ,
-            float rotW, float rotX, float rotY, float rotZ,
-            float scaleX, float scaleY, float scaleZ)
-        {
-            this.frame = frame;
-            this.jointIndex = jointIndex;
-            this.posX = posX; this.posY = posY; this.posZ = posZ;
-            this.rotW = rotW; this.rotX = rotX; this.rotY = rotY; this.rotZ = rotZ;
-            this.scaleX = scaleX; this.scaleY = scaleY; this.scaleZ = scaleZ;
-        }
     }
 
     IEnumerator Start()
@@ -63,23 +52,28 @@ public class moveRightHandFromCSV : MonoBehaviour
         rInput = ParseCSV(csvText);
         AssignFrames(ref rInput);
 
+        // Prepare storage
+        jointPositions = new List<Vector3>[26];
+        jointRotations = new List<Quaternion>[26];
+        for (int i = 0; i < 26; i++)
+        {
+            jointPositions[i] = new List<Vector3>();
+            jointRotations[i] = new List<Quaternion>();
+        }
+
+        // Fill from CSV
         foreach (var entry in rInput)
         {
+            if (entry.jointIndex < 0 || entry.jointIndex > 25) continue;
+
             Vector3 pos = new Vector3(entry.posX, entry.posY, entry.posZ);
             Quaternion rot = new Quaternion(entry.rotX, entry.rotY, entry.rotZ, entry.rotW);
 
-            if (entry.jointIndex == 0) // R_Wrist
-            {
-                listR_WristPos.Add(pos);
-                listR_WristQua.Add(rot);
-            }
-            else if (entry.jointIndex == 25) // R_ThumbTip
-            {
-                listR_ThumbTipQua.Add(rot);
-            }
+            jointPositions[entry.jointIndex].Add(pos);
+            jointRotations[entry.jointIndex].Add(rot);
         }
 
-        Debug.Log($"Loaded {listR_WristPos.Count} right wrist frames and {listR_ThumbTipQua.Count} right thumb tip frames.");
+        Debug.Log("Right hand CSV data loaded.");
     }
 
     List<sTransform> ParseCSV(string csvText)
@@ -147,28 +141,36 @@ public class moveRightHandFromCSV : MonoBehaviour
         }
     }
 
-    int fc = 0;
-
     void Update()
     {
-        if (listR_WristPos.Count == 0 || listR_ThumbTipQua.Count == 0)
-            return;
+        if (jointRotations == null || jointRotations[0].Count == 0) return;
 
-        if (fc < listR_WristPos.Count)
+        frameTimer += Time.deltaTime;
+        if (frameTimer >= secondsPerFrame)
         {
-            R_Wrist.position = listR_WristPos[fc];
-            R_Wrist.rotation = listR_WristQua[fc];
-
-            if (fc < listR_ThumbTipQua.Count)
-            {
-                R_ThumbTip.localRotation = listR_ThumbTipQua[fc];
-            }
-
-            fc++;
+            frameTimer = 0f;
+            PlayFrame(currentFrame);
+            currentFrame = (currentFrame + 1) % jointRotations[0].Count;
         }
-        else
+    }
+
+    void PlayFrame(int frame)
+    {
+        for (int i = 0; i < rightHandJoints.Length; i++)
         {
-            fc = 0;
+            if (rightHandJoints[i] == null) continue;
+
+            if (i == 0) // Root joint: global position + rotation
+            {
+                rightHandJoints[i].position = jointPositions[i][frame];
+                rightHandJoints[i].rotation = jointRotations[i][frame];
+            }
+            else // Children: convert global to local
+            {
+                Quaternion parentGlobalRot = rightHandJoints[i].parent.rotation;
+                Quaternion localRot = Quaternion.Inverse(parentGlobalRot) * jointRotations[i][frame];
+                rightHandJoints[i].localRotation = localRot;
+            }
         }
     }
 }
