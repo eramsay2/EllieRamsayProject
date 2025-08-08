@@ -3563,7 +3563,7 @@ MonoBehaviour:
   - {fileID: 785368100}
   - {fileID: 217560787}
   fileName: TrialPillsBothHandsRepeated.csv
-  secondsPerFrame: 0.033
+  secondsPerFrame: 0
 --- !u!114 &1479932781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3604,7 +3604,7 @@ MonoBehaviour:
   - {fileID: 736365912}
   - {fileID: 300014078}
   fileName: TrialPillsBothHandsRepeated.csv
-  secondsPerFrame: 0.033
+  secondsPerFrame: 0
 --- !u!114 &1479932782
 MonoBehaviour:
   m_ObjectHideFlags: 0
