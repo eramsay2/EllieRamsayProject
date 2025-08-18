@@ -14459,6 +14459,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scene Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 3006688258401704453, guid: bbf2f227ce6da7d478a1a99799e92828, type: 3}
+      propertyPath: rightIndexPressed.m_Reference
+      value: 
+      objectReference: {fileID: -1758520528963094988, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    - target: {fileID: 3006688258401704453, guid: bbf2f227ce6da7d478a1a99799e92828, type: 3}
+      propertyPath: rightIndexPressed.m_Action.m_Id
+      value: 098f5dc6-dd83-45ba-b07d-9173630b90c0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3006688258401704453, guid: bbf2f227ce6da7d478a1a99799e92828, type: 3}
+      propertyPath: rightIndexPressed.m_UseReference
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3006688258401704453, guid: bbf2f227ce6da7d478a1a99799e92828, type: 3}
+      propertyPath: rightIndexPressed.m_Action.m_Name
+      value: Right Index Pressed
+      objectReference: {fileID: 0}
     - target: {fileID: 3021747600266804751, guid: bbf2f227ce6da7d478a1a99799e92828, type: 3}
       propertyPath: m_RootOrder
       value: 3

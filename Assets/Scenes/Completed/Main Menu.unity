@@ -5384,13 +5384,21 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 647334064}
+    - target: {fileID: 5474369321879826785, guid: 78bb187341452f64fae4293c790361b4, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5474369321879826785, guid: 78bb187341452f64fae4293c790361b4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 5573573208284026366, guid: 78bb187341452f64fae4293c790361b4, type: 3}
       propertyPath: m_text
-      value: Supination-Pronation
+      value: 1. Hand Turning
       objectReference: {fileID: 0}
     - target: {fileID: 5573573208284026366, guid: 78bb187341452f64fae4293c790361b4, type: 3}
       propertyPath: m_fontSize
-      value: 49.55
+      value: 65.3
       objectReference: {fileID: 0}
     - target: {fileID: 5573573208284026366, guid: 78bb187341452f64fae4293c790361b4, type: 3}
       propertyPath: m_overflowMode
@@ -6843,7 +6851,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Ellie Ramsay \nProject "
+  m_text: Upper Limb Rehabilitation Exercises
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6852,8 +6860,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4282731594
+  m_fontColor: {r: 0.2901961, g: 0.29803923, b: 0.27058825, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -6870,7 +6878,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 33.05
+  m_fontSize: 24.35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -12569,7 +12577,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5573573208284026366, guid: 78bb187341452f64fae4293c790361b4, type: 3}
       propertyPath: m_text
-      value: Cup Grabbing
+      value: 3. Mug Grabbing
+      objectReference: {fileID: 0}
+    - target: {fileID: 5573573208284026366, guid: 78bb187341452f64fae4293c790361b4, type: 3}
+      propertyPath: m_fontSize
+      value: 62.75
       objectReference: {fileID: 0}
     - target: {fileID: 8864036214126804170, guid: 78bb187341452f64fae4293c790361b4, type: 3}
       propertyPath: m_Name
@@ -12683,7 +12695,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5573573208284026366, guid: 78bb187341452f64fae4293c790361b4, type: 3}
       propertyPath: m_text
-      value: Ball Rolling
+      value: 2. Ball Rolling
+      objectReference: {fileID: 0}
+    - target: {fileID: 5573573208284026366, guid: 78bb187341452f64fae4293c790361b4, type: 3}
+      propertyPath: m_fontSize
+      value: 71.6
       objectReference: {fileID: 0}
     - target: {fileID: 8864036214126804170, guid: 78bb187341452f64fae4293c790361b4, type: 3}
       propertyPath: m_Name
