@@ -5649,8 +5649,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.9498825, y: 1.6793281, z: 1.0394573}
-  m_Center: {x: 1.6484737, y: 0.98636895, z: 0.09441376}
+  m_Size: {x: 1.0071278, y: 1.9538403, z: 0.39446354}
+  m_Center: {x: 2.473259, y: 1.123625, z: 0.010740757}
 --- !u!114 &2092140523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5672,7 +5672,7 @@ MonoBehaviour:
     m_Bits: 1
   m_DistanceCalculationMode: 1
   m_SelectMode: 1
-  m_FocusMode: 1
+  m_FocusMode: 2
   m_CustomReticle: {fileID: 0}
   m_AllowGazeInteraction: 0
   m_AllowGazeSelect: 0
