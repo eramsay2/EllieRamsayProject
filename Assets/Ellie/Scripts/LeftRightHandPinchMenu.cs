@@ -2,16 +2,16 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit.Inputs;
 
-public class LeftHandPinchMenu : MonoBehaviour
+public class BothHandsPinchMenu : MonoBehaviour
 {
-    [Header("Input Action Reference")]
+    [Header("Input Action References")]
     public InputActionProperty leftIndexPressed;
+    public InputActionProperty rightIndexPressed;
 
     [Header("Menu to Toggle")]
     public GameObject menuUI;
 
     private EnableDisableHands ToggleHands;
-
     private bool wasPinching = false;
 
     private void Start()
@@ -22,18 +22,23 @@ public class LeftHandPinchMenu : MonoBehaviour
     void OnEnable()
     {
         leftIndexPressed.action.Enable();
+        rightIndexPressed.action.Enable();
     }
 
     void OnDisable()
     {
         leftIndexPressed.action.Disable();
+        rightIndexPressed.action.Disable();
     }
 
     void Update()
     {
-        // indexPressed is typically a float (0.0 to 1.0)
-        float pinchValue = leftIndexPressed.action.ReadValue<float>();
-        bool isPinching = pinchValue > 0.8f;
+        // read pinch values (0.0 to 1.0)
+        float leftPinch = leftIndexPressed.action.ReadValue<float>();
+        float rightPinch = rightIndexPressed.action.ReadValue<float>();
+
+        // true if either hand is pinching
+        bool isPinching = (leftPinch > 0.8f) || (rightPinch > 0.8f);
 
         if (isPinching && !wasPinching)
         {
