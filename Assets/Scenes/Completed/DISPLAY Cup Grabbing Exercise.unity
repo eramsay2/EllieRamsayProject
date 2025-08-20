@@ -3658,7 +3658,7 @@ MonoBehaviour:
   - {fileID: 1765367617}
   - {fileID: 1765367616}
   - {fileID: 217560787}
-  fileName: TrialCupPickUp2.csv
+  fileName: Bimanualmuggrabbingdata.csv
   secondsPerFrame: 0
 --- !u!114 &1479932781
 MonoBehaviour:
@@ -3699,7 +3699,7 @@ MonoBehaviour:
   - {fileID: 300014081}
   - {fileID: 300014080}
   - {fileID: 300014078}
-  fileName: TrialCupPickUp2.csv
+  fileName: Bimanualmuggrabbingdata.csv
   secondsPerFrame: 0
 --- !u!114 &1479932782
 MonoBehaviour:
@@ -3713,7 +3713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25868967914ab6c4fb7a100cd16d6e3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  csvFileName: TrialCupPickUp2.csv
+  csvFileName: Bimanualmuggrabbingdata.csv
   objectsToAnimate:
   - {fileID: 2092140521}
   - {fileID: 10536339}
@@ -3939,6 +3939,10 @@ PrefabInstance:
     - target: {fileID: 6026471071757072253, guid: 991e382eca8f64d439bcd897a7041cc1, type: 3}
       propertyPath: m_Name
       value: Glass
+      objectReference: {fileID: 0}
+    - target: {fileID: 6026471071757072253, guid: 991e382eca8f64d439bcd897a7041cc1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6712127860171524075, guid: 991e382eca8f64d439bcd897a7041cc1, type: 3}
       propertyPath: m_RootOrder
@@ -4662,6 +4666,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pills
       objectReference: {fileID: 0}
+    - target: {fileID: 4068240916012763926, guid: cbdc1ace92870cf47891eeccadd2215c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7922456910679486962, guid: cbdc1ace92870cf47891eeccadd2215c, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -4945,6 +4953,10 @@ PrefabInstance:
     - target: {fileID: 2771353530395221554, guid: ccda5171cbb390b408eb49bec9ed3142, type: 3}
       propertyPath: m_Name
       value: Jar
+      objectReference: {fileID: 0}
+    - target: {fileID: 2771353530395221554, guid: ccda5171cbb390b408eb49bec9ed3142, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4039659605235562323, guid: ccda5171cbb390b408eb49bec9ed3142, type: 3}
       propertyPath: m_RootOrder
