@@ -17363,7 +17363,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8082177964859741664}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.8, y: -0.09, z: 8.7}
+  m_LocalPosition: {x: 10.509, y: 0.367, z: 8.746}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -17684,7 +17684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   XROrigin: {fileID: 8082177964859741664}
-  desiredLocation: {x: 10.8, y: -0.09, z: 8.7}
+  desiredLocation: {x: 10.509, y: 0.367, z: 8.746}
   desiredForward: {x: 0, y: 0, z: 0}
 --- !u!114 &8621336712330089571
 MonoBehaviour:
