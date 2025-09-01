@@ -9452,7 +9452,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   XROrigin: {fileID: 8082177964859741664}
-  desiredLocation: {x: 10.559, y: 0.367, z: 8.746}
+  desiredLocation: {x: 11, y: 0.367, z: 8.746}
   desiredForward: {x: 0, y: 0, z: 1}
 --- !u!120 &3412678938917823746
 LineRenderer:
