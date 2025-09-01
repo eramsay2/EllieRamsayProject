@@ -3939,6 +3939,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scene Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 3006688258401704453, guid: bbf2f227ce6da7d478a1a99799e92828, type: 3}
+      propertyPath: rightIndexPressed.m_Action.m_Id
+      value: abc9a69d-caf7-45fd-a0d4-c94b3d50b021
+      objectReference: {fileID: 0}
+    - target: {fileID: 3006688258401704453, guid: bbf2f227ce6da7d478a1a99799e92828, type: 3}
+      propertyPath: rightIndexPressed.m_Action.m_Name
+      value: Right Index Pressed
+      objectReference: {fileID: 0}
     - target: {fileID: 3021747600266804751, guid: bbf2f227ce6da7d478a1a99799e92828, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -9064,6 +9072,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1821440676508141876}
+  - component: {fileID: 3412602611579797586}
   m_Layer: 0
   m_Name: VRComponents
   m_TagString: Untagged
@@ -9071,6 +9080,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &3412602611579797586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3412602611579797585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce92dd6e20ef54244b832f38e8f0b364, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  XROrigin: {fileID: 8082177964859741664}
+  desiredLocation: {x: 0, y: 0, z: 0}
+  desiredForward: {x: 0, y: 0, z: 1}
 --- !u!120 &3412678938917823746
 LineRenderer:
   serializedVersion: 2
