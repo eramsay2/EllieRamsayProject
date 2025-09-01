@@ -9451,8 +9451,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce92dd6e20ef54244b832f38e8f0b364, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  XROrigin: {fileID: 0}
-  desiredLocation: {x: 0, y: 0, z: 0}
+  XROrigin: {fileID: 8082177964859741664}
+  desiredLocation: {x: 10.509, y: 0.367, z: 8.746}
   desiredForward: {x: 0, y: 0, z: 1}
 --- !u!120 &3412678938917823746
 LineRenderer:
