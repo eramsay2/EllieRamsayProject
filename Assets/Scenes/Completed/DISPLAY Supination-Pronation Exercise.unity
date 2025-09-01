@@ -8951,7 +8951,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   XROrigin: {fileID: 8082177964859741664}
-  desiredLocation: {x: 10.509, y: 0.367, z: 8.746}
+  desiredLocation: {x: 10.559, y: 0.367, z: 8.746}
   desiredForward: {x: 0, y: 0, z: 1}
 --- !u!120 &3412678938917823746
 LineRenderer:
@@ -16933,7 +16933,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8082177964859741667}
-  - component: {fileID: 8621336712330089570}
   - component: {fileID: 8621336712330089569}
   - component: {fileID: 3567383482560485207}
   - component: {fileID: 3567383482560485202}
@@ -16955,7 +16954,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8082177964859741664}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.509, y: 0.367, z: 8.746}
+  m_LocalPosition: {x: 10.559, y: 0.367, z: 8.685}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -17263,21 +17262,6 @@ MonoBehaviour:
   m_CameraFloorOffsetObject: {fileID: 7493651798848655519}
   m_RequestedTrackingOriginMode: 2
   m_CameraYOffset: 1.36144
---- !u!114 &8621336712330089570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8082177964859741664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce92dd6e20ef54244b832f38e8f0b364, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  XROrigin: {fileID: 8082177964859741664}
-  desiredLocation: {x: 10.509, y: 0.367, z: 8.746}
-  desiredForward: {x: 0, y: 0, z: 0}
 --- !u!114 &8621336712330089571
 MonoBehaviour:
   m_ObjectHideFlags: 0
