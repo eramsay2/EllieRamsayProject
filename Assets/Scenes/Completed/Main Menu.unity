@@ -5407,7 +5407,7 @@ PrefabInstance:
       propertyPath: m_text
       value: '1
 
-        Hand Turning'
+        Turning Hands'
       objectReference: {fileID: 0}
     - target: {fileID: 5573573208284026366, guid: 78bb187341452f64fae4293c790361b4, type: 3}
       propertyPath: m_fontSize
@@ -12670,7 +12670,7 @@ PrefabInstance:
       propertyPath: m_text
       value: '3
 
-        Mug Grabbing'
+        Drinking Tea'
       objectReference: {fileID: 0}
     - target: {fileID: 5573573208284026366, guid: 78bb187341452f64fae4293c790361b4, type: 3}
       propertyPath: m_fontSize
@@ -12844,7 +12844,7 @@ PrefabInstance:
       propertyPath: m_text
       value: '2
 
-        Ball Rolling'
+        Rolling Ball'
       objectReference: {fileID: 0}
     - target: {fileID: 5573573208284026366, guid: 78bb187341452f64fae4293c790361b4, type: 3}
       propertyPath: m_fontSize

@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit.Inputs;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class BothHandsPinchMenu : MonoBehaviour
 {
@@ -19,19 +21,19 @@ public class BothHandsPinchMenu : MonoBehaviour
         ToggleHands = GameObject.Find("XR Origin (XR Rig)").GetComponent<EnableDisableHands>();
     }
 
-    void OnEnable()
+    private void OnEnable()
     {
         leftIndexPressed.action.Enable();
         rightIndexPressed.action.Enable();
     }
 
-    void OnDisable()
+    private void OnDisable()
     {
         leftIndexPressed.action.Disable();
         rightIndexPressed.action.Disable();
     }
 
-    void Update()
+    private void Update()
     {
         // read pinch values (0.0 to 1.0)
         float leftPinch = leftIndexPressed.action.ReadValue<float>();
@@ -42,13 +44,22 @@ public class BothHandsPinchMenu : MonoBehaviour
 
         if (isPinching && !wasPinching)
         {
-            ToggleMenu();
+            // if menu is not active yet -> open it
+            if (!menuUI.activeSelf)
+            {
+                ToggleMenu();
+            }
+            else
+            {
+                // if menu is active -> treat pinch as a click
+                TryClickUI();
+            }
         }
 
         wasPinching = isPinching;
     }
 
-    void ToggleMenu()
+    private void ToggleMenu()
     {
         if (menuUI != null)
         {
@@ -56,4 +67,18 @@ public class BothHandsPinchMenu : MonoBehaviour
             ToggleHands.ToggleHands();
         }
     }
+
+    private void TryClickUI()
+    {
+        // This uses Unity’s EventSystem to simulate a button click
+        if (EventSystem.current != null && EventSystem.current.currentSelectedGameObject != null)
+        {
+            Button button = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
+            if (button != null)
+            {
+                button.onClick.Invoke();
+            }
+        }
+    }
 }
+
