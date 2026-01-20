@@ -4131,8 +4131,20 @@ PrefabInstance:
       value: Scene Manager
       objectReference: {fileID: 0}
     - target: {fileID: 3006688258401704453, guid: bbf2f227ce6da7d478a1a99799e92828, type: 3}
+      propertyPath: menuUI
+      value: 
+      objectReference: {fileID: 1575921711}
+    - target: {fileID: 3006688258401704453, guid: bbf2f227ce6da7d478a1a99799e92828, type: 3}
+      propertyPath: rightIndexPressed.m_Reference
+      value: 
+      objectReference: {fileID: -1758520528963094988, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    - target: {fileID: 3006688258401704453, guid: bbf2f227ce6da7d478a1a99799e92828, type: 3}
       propertyPath: rightIndexPressed.m_Action.m_Id
-      value: abc9a69d-caf7-45fd-a0d4-c94b3d50b021
+      value: 098f5dc6-dd83-45ba-b07d-9173630b90c0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3006688258401704453, guid: bbf2f227ce6da7d478a1a99799e92828, type: 3}
+      propertyPath: rightIndexPressed.m_UseReference
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3006688258401704453, guid: bbf2f227ce6da7d478a1a99799e92828, type: 3}
       propertyPath: rightIndexPressed.m_Action.m_Name
@@ -4187,6 +4199,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbf2f227ce6da7d478a1a99799e92828, type: 3}
+--- !u!1 &1575921711 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3892757989657584475, guid: bbf2f227ce6da7d478a1a99799e92828, type: 3}
+  m_PrefabInstance: {fileID: 1575921710}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1581401164
 PrefabInstance:
   m_ObjectHideFlags: 0
